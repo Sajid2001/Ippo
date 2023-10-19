@@ -1,0 +1,29 @@
+<h1>Edit Bookmark</h1>
+  <mat-form-field *ngIf="this.bookmark.showType === 'TV'">
+    <mat-label>Episode Number</mat-label>
+    <input type="number" min="0" value="episodeNumber" matInput [(ngModel)]="episodeNumber">
+  </mat-form-field>
+  <mat-form-field *ngIf="this.bookmark.showType === 'Movie'">
+    <mat-label>Timestamp</mat-label>
+    <input value="timeStamp" matInput [(ngModel)]="timeStamp">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Custom Url</mat-label>
+    <input value="customUrl" matInput [(ngModel)]="customUrl">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>What do you last remember?</mat-label>
+    <textarea value="description" matInput [(ngModel)]="description"></textarea>
+  </mat-form-field>
+  <div class="button-panel">
+    <button mat-raised-button (click)="onClear()">Clear</button>
+    <button mat-raised-button (click)="onSubmit()" color="primary">Update</button>
+    <button mat-raised-button color="warn" (click)="openDeleteConfirmationDialog()">Delete</button>
+  </div>
+  <div *ngIf="errors && errors != {}">
+      <p class="error-text" *ngFor="let error of errors | keyvalue">
+        {{ error.value }}
+      </p>
+  </div>
+  
+  

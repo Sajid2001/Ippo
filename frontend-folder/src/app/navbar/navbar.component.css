@@ -1,0 +1,31 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.navbar{
+    background-color: black;
+    color: white;
+}
+
+.navbar-item{
+    margin: 5px;
+    padding: 5px;
+}
+
+.navbar-item:hover{
+    text-decoration: underline;
+}
+
+@media (min-width: 599px) {
+    .menu-button {
+      display: none;
+    }
+    
+  }
+
+  @media (max-width: 599px) {
+    .navbar-list{
+        display: none;
+    }
+    
+  }

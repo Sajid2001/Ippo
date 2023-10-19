@@ -1,0 +1,45 @@
+<h1>New Bookmark</h1>
+<mat-form-field class="long-input-field">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="searchName">
+  </mat-form-field>
+
+  <button mat-raised-button (click)="onSearch()">Search</button>
+
+  <div *ngIf="searchResults && searchResults.length > 0" class="results-display">
+    <div class="result-card" *ngFor="let result of searchResults" (click)="selectItem(result)">
+      <img [ngClass]="{'selected': newBookmark.name === result.title}" class="result-image" [attr.src] = "result.image_url"/>
+    </div>
+  </div>
+  
+  <div class="detailed-form" *ngIf="newBookmark.name !== ''">
+    <h2 style="text-align: center; font-weight: bold;">{{newBookmark.name}}</h2>
+    <div style="display: flex; flex-direction: row; gap: 10px;">
+      <mat-form-field class="short-input-field" *ngIf="newBookmark.showType === 'TV' || newBookmark.showType === 'OVA' || newBookmark.showType == 'ONA'">
+        <mat-label>Episode Number</mat-label>
+          <input type="number" min="0" max="2000" matInput [(ngModel)]="newBookmark.episodesWatched">
+      </mat-form-field>
+      <mat-form-field class="short-input-field" *ngIf="newBookmark.showType === 'Movie' || newBookmark.showType === 'Special'">
+        <mat-label>Timestamp (hh:mm:ss)</mat-label>
+        <input type="text" matInput [(ngModel)]="newBookmark.timeStamp">
+      </mat-form-field>
+      <mat-form-field class="short-input-field">
+        <mat-label>Custom Url</mat-label>
+        <input type="url" matInput [(ngModel)]="newBookmark.customUrl">
+      </mat-form-field>
+    </div>
+    <mat-form-field class="long-input-field">
+      <mat-label>What do you last remember?</mat-label>
+      <textarea matInput [(ngModel)]="newBookmark.lastSeenDescription"></textarea>
+    </mat-form-field>
+    <button style="margin-bottom: 10px;" *ngIf="!loading" mat-raised-button (click)="onSubmit()">Submit</button>
+</div>
+
+<div *ngIf="errors && errors != {} && !loading">
+  <p class="error-text" *ngFor="let error of errors | keyvalue">
+    {{ error.value }}
+  </p>
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
+  

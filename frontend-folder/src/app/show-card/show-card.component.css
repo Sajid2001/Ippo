@@ -1,0 +1,122 @@
+  h1{
+    font-size: xx-large;
+    font-weight: bold;
+  }
+
+  @media(max-width:600px){
+    h1{
+      font-size: x-large;
+    }
+    h2{
+      font-size: large;
+    }
+    h4{
+      font-size: small;
+    }
+    .example-card{
+      margin: 20px;
+    }
+  }
+
+  h3{
+    font-size: x-large;
+    font-weight: bold;
+    padding-bottom: 15px;
+    padding-top: 10px;
+  }
+
+  p{
+    font-size: large;
+    padding-bottom: 15px;
+  }
+
+ 
+
+.mat-card-image{
+  border-radius: 30px;
+}
+
+.card {
+  position: relative;
+  width: 300px; /* Adjust the card width as needed */
+  height: 400px; /* Adjust the card height as needed */
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6); /* Adjust the background color and opacity */
+  color: white; /* Text color */
+  padding: 16px;
+  backdrop-filter: blur(3px);
+}
+
+/* .card:hover .overlay{
+  height: 94%;
+} */
+
+
+.card:hover .hidden-text{
+  display: inline
+}
+
+.hidden-text{
+  display: none;
+}
+
+.overlay-text {
+  margin: 0;
+}
+
+.remind-text{
+  font-weight: bold;
+}
+
+.mat-button{
+  margin: 10px;
+  font-size: larger;
+}
+
+.mal-url{
+  color: white;
+  text-decoration: none;
+}
+
+.mal-url:hover{
+  text-decoration: underline;
+}
+
+.stream-link{
+  color: black;
+  text-decoration: none;
+  border-radius: 3px;
+  background-color: white;
+  margin-right: 12px;
+  margin-bottom:5px;
+  padding:6px;
+  font-size: medium;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.stream-link:hover{
+  color: rgba(0, 0, 0, 0.688);
+}
+
+.links{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.logo-image{
+  height: 20px;
+  padding: 5px;
+}
+

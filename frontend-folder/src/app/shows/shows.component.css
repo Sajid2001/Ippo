@@ -1,0 +1,32 @@
+
+h1{
+   font-size: xx-large; 
+   text-align: center;
+   margin: 100px;
+   font-weight: bold;
+}
+
+.mat-grid-list{
+   margin: auto;
+   max-width: 1500px;
+   margin-bottom: 200px;
+}
+
+.example-form {
+   min-width: 150px;
+   max-width: 550px;
+   font-size: larger;
+   width: 100%;
+   margin: auto;
+   margin-bottom: 80px;
+ }
+ 
+ .example-full-width {
+   width: 100%;
+}
+
+@media (max-width:600px) {
+   .example-form {
+      max-width: 400px;
+    }
+}

@@ -1,0 +1,19 @@
+<app-home-hero></app-home-hero>
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Search Bookmarks</mat-label>
+      <input matInput [(ngModel)]="searchText" name="searchText" (input)="filterBookmarks()">
+    </mat-form-field>
+  </form>
+  
+  <app-loading *ngIf="loading"></app-loading>
+  <mat-grid-list [cols]="getGridCols()" *ngIf="!loading" rowHeight="450px" gutterSize="20px">
+    <div *ngFor="let bookmark of filteredBookmarks">
+        <mat-grid-tile>
+            <app-show-card [bookmark] = "bookmark"></app-show-card>
+        </mat-grid-tile>
+      </div>
+    
+  </mat-grid-list>
+  

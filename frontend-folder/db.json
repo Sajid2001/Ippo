@@ -1,0 +1,141 @@
+{
+  "streamLinks": [
+    {
+      "bookmark_id": 1,
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/series/G9VHN9P43/horimiya"
+    },
+    {
+      "bookmark_id": 1,
+      "name": "Funimation",
+      "url": "https://www.funimation.com/shows/horimiya/"
+    },
+    {
+      "bookmark_id": 2,
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/series/G9VHN9P43/horimiya"
+    },
+    {
+      "bookmark_id": 2,
+      "name": "Funimation",
+      "url": "https://www.funimation.com/shows/one-piece/"
+    },
+    {
+      "bookmark_id": 2,
+      "name": "Apple TV",
+      "url": "https://tv.apple.com/show/umc.cmc.2jf3h5bibsseewr9bh0rg5kcl"
+    },
+    {
+      "bookmark_id": 2,
+      "name": "Hulu",
+      "url": "https://www.hulu.com/series/one-piece-c7a08df6-d0d5-4dd3-afff-d1f90133cd4e"
+    },
+    {
+      "bookmark_id": 2,
+      "name": "Netflix",
+      "url": "https://www.netflix.com/title/80107103"
+    },
+    {
+      "bookmark_id": 2,
+      "name": "Tubi TV",
+      "url": "https://tubitv.com/series/300006454"
+    },
+    {
+      "bookmark_id": 3,
+      "name": "Amazon Prime Video US",
+      "url": "https://www.amazon.com/dp/B08DRRGF59"
+    },
+    {
+      "bookmark_id": 3,
+      "name": "Youtube TV",
+      "url": "https://www.youtube.com/watch?v=dsBb8i6teKM"
+    },
+    {
+      "bookmark_id": 4,
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/series/GR75253JY"
+    },
+    {
+      "bookmark_id": 4,
+      "name": "Funimation",
+      "url": "https://www.funimation.com/shows/psycho-pass/"
+    },
+    {
+      "bookmark_id": 4,
+      "name": "Hulu",
+      "url": "https://www.hulu.com/series/psycho-pass-2b02607f-fc22-456f-8655-685d689d6701"
+    },
+    {
+      "bookmark_id": 4,
+      "name": "Tubi TV",
+      "url": "https://tubitv.com/series/2271"
+    },
+    {
+      "bookmark_id": 5,
+      "name": "Crunchyroll",
+      "url": "https://www.crunchyroll.com/series/GR751KNZY/attack-on-titan"
+    },
+    {
+      "bookmark_id": 5,
+      "name": "Funimation",
+      "url": "https://www.funimation.com/shows/attack-on-titan/"
+    }
+  ],
+  "bookmarks": [
+    {
+      "id": 1,
+      "name": "Horimiya",
+      "malUrl": "https://myanimelist.net/anime/42897/Horimiya?q=hormiya&cat=anime",
+      "episodeNumber": 6,
+      "timestamp": "00:12:23",
+      "type": "TV",
+      "customUrl": "https://aniwave.to/watch/horimiya.m0o8/ep-6",
+      "description": "They do it in episode 7!!",
+      "imageUrl": "https://cdn.myanimelist.net/images/anime/1007/136277l.jpg"
+    },
+    {
+      "id": 2,
+      "name": "One Piece",
+      "malUrl": "https://myanimelist.net/anime/21/One_Piece?q=one%20iece&cat=anime",
+      "episodeNumber": 5,
+      "timestamp": "00:12:23",
+      "type": "TV",
+      "customUrl": "https://aniwave.to/watch/one-piece.ov8/ep-870",
+      "description": "Zoro got lost and Luffy found the One Piss by himself",
+      "imageUrl": "https://cdn.myanimelist.net/images/anime/6/73245l.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Koe No Katachi",
+      "malUrl": "https://myanimelist.net/anime/28851/Koe_no_Katachi?q=koe%20no&cat=anime",
+      "episodeNumber": 1,
+      "timestamp": "01:12:23",
+      "type": "Movie",
+      "customUrl": "",
+      "description": "She finally spoke lol",
+      "imageUrl": "https://cdn.myanimelist.net/images/anime/1122/96435l.jpg"
+    },
+    {
+      "id": 4,
+      "name": "PsychoPass",
+      "malUrl": "https://myanimelist.net/anime/13601/Psycho-Pass?q=psycho&cat=anime",
+      "episodeNumber": 12,
+      "timestamp": "00:12:23",
+      "type": "TV",
+      "customUrl": "https://aniwave.to/watch/psycho-pass.mpp/ep-12",
+      "description": "Kogami went rogue and killed Makashima. Akane and his crew are still looking for him.",
+      "imageUrl": "https://cdn.myanimelist.net/images/anime/5/43399l.jpg"
+    },
+    {
+      "name": "Shingeki no Kyojin: The Final Season",
+      "episodeNumber": "12",
+      "timestamp": "00:00:00",
+      "type": "TV",
+      "malUrl": "https://myanimelist.net/anime/40028/Shingeki_no_Kyojin__The_Final_Season",
+      "customUrl": "",
+      "description": "Eren Jaegar",
+      "imageUrl": "https://cdn.myanimelist.net/images/anime/1000/110531l.jpg",
+      "id": 5
+    }
+  ]
+}
