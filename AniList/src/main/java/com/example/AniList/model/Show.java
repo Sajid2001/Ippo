@@ -1,15 +1,9 @@
 package com.example.AniList.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-import org.springframework.data.relational.core.sql.In;
-import org.springframework.format.annotation.DateTimeFormat;
-import java.sql.Time;
 
 public class Show {
     private Integer id;
-    @NotNull(message = "Name cannot be blank")
     @NotBlank(message = "Name cannot be blank")
     private String name;
     private String showType;

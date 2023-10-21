@@ -12,7 +12,8 @@ import java.util.List;
 public class StreamInfoRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public StreamInfoRepository(JdbcTemplate jdbcTemplate) {
+    public StreamInfoRepository(JdbcTemplate jdbcTemplate)
+    {
         this.jdbcTemplate = jdbcTemplate;
     }
 

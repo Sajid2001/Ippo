@@ -10,17 +10,8 @@ import com.example.AniList.service.StreamInfoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Time;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import static com.example.AniList.validator.ShowValidator.isValidTimeStamp;
 
 @RestController
 @CrossOrigin
@@ -73,50 +64,29 @@ public class ShowController {
     @PostMapping("/bookmarks")
     public ResponseEntity<Object> addShow(@Valid @RequestBody Show show)
     {
-
-            String query = show.getName();
-            Integer showId = showRepository.saveShow(show);
-            List<StreamInfo> streamingInfo = streamInfoService.scrapeLiveChart(query);
-            if (!streamingInfo.isEmpty())
+        String query = show.getName();
+        Integer showId = showRepository.saveShow(show);
+        List<StreamInfo> streamingInfo = streamInfoService.scrapeLiveChart(query);
+        if (!streamingInfo.isEmpty())
+        {
+            for (StreamInfo streamInfo : streamingInfo)
             {
-                for (StreamInfo streamInfo : streamingInfo)
-                {
-                    streamInfo.setShowId(showId);
-                    streamInfoRepository.saveStreamInfo(streamInfo);
-                }
-                if(show.getTimeStamp() == null)
-                {
-                    show.setTimeStamp("00:00:00");
-                }
-
+                streamInfo.setShowId(showId);
+                streamInfoRepository.saveStreamInfo(streamInfo);
             }
-            show.setId(showId);
-            return ResponseEntity.ok(show);
-
+            if(show.getTimeStamp() == null)
+            {
+                show.setTimeStamp("00:00:00");
+            }
+        }
+        show.setId(showId);
+        return ResponseEntity.ok(show);
     }
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @PostMapping("/bookmarks")
-//    public ResponseEntity<Show> addShow(@RequestBody Show show)
-//    {
-//        String query = show.getName();
-//        Integer showId = showRepository.saveShow(show);
-//        List<StreamInfo> streamingInfo = streamInfoService.scrapeLiveChart(query);
-//        for (StreamInfo streamInfo : streamingInfo)
-//        {
-//            streamInfo.setShowId(showId);
-//            streamInfoRepository.saveStreamInfo(streamInfo);
-//        }
-//        if(show.getTimeStamp() == null)
-//        {
-//            show.setTimeStamp(Time.valueOf("00:00:00"));
-//        }
-//        show.setId(showId);
-//        return ResponseEntity.ok(show);
-//    }
 
     //Look for more efficient way
     @PutMapping("/bookmarks/{id}")
-    public ResponseEntity<Show> updateShow(@PathVariable Integer id, @Valid @RequestBody Show updatedShow) {
+    public ResponseEntity<Show> updateShow(@PathVariable Integer id, @Valid @RequestBody Show updatedShow)
+    {
         ResponseEntity<Show> showResponse = showRepository.getShowById(id);
         if(showResponse.getStatusCode() == HttpStatus.OK)
         {
@@ -162,7 +132,6 @@ public class ShowController {
         }
     }
 
-
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/bookmarks/{id}")
     public ResponseEntity<Show> deleteShow(@PathVariable Integer id)
@@ -179,17 +148,4 @@ public class ShowController {
             return ResponseEntity.notFound().build();
         }
     }
-
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex){
-//        Map<String, String> errors = new HashMap<>();
-//        ex.getBindingResult().getAllErrors().forEach((error) -> {
-//            String fieldName = ((FieldError) error).getField();
-//            String errorMessage = error.getDefaultMessage();
-//            errors.put(fieldName, errorMessage);
-//        });
-//
-//        return errors;
-//    }
 }

@@ -17,3 +17,10 @@ CREATE TABLE IF NOT EXISTS stream_info (
     url VARCHAR(255),
     FOREIGN KEY (show_id) REFERENCES shows(id) ON DELETE CASCADE
 );
+
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
