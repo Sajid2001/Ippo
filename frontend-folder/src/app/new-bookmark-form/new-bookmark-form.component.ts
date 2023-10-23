@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BookmarkService } from '../services/bookmark.service';
 import { JikanService } from '../services/jikan.service';
 import { Bookmark } from '../shared/bookmark.model';
 import { JikanResult } from '../shared/jikanresult.model';
+import { SnackbarService } from '../services/snackbar.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class NewBookmarkFormComponent implements OnInit {
     public dialogRef: MatDialogRef<NewBookmarkFormComponent>,
     private bookmarkService: BookmarkService,
     private jikanService: JikanService,
+    private snackbarService:SnackbarService
   ) { }
 
   errors: { [key: string]: string } = {};
@@ -75,6 +77,7 @@ export class NewBookmarkFormComponent implements OnInit {
       this.bookmarkService.emitBookmarkAdded(addedBookmark);
       this.errors = {}
       this.dialogRef.close();
+      this.snackbarService.open("You successfully created a new bookmark!")
     }, (error) => {
       console.log(error.error);
       this.errors = error.error;

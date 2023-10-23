@@ -1,9 +1,18 @@
+.screen{
+   min-height: 80vh
+}
 
 h1{
    font-size: xx-large; 
    text-align: center;
    margin: 100px;
    font-weight: bold;
+}
+
+h2{
+   text-align: center;
+   margin: 100px;
+   font: x-large;
 }
 
 .mat-grid-list{

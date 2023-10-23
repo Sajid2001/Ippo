@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import { Bookmark } from '../shared/bookmark.model';
 import { BookmarkService } from '../services/bookmark.service';
 import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component';
+import { SnackbarService } from '../services/snackbar.service';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class EditBookmarkFormComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditBookmarkFormComponent>,
     private bookmarkService: BookmarkService,
+    private snackbarService: SnackbarService,
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any 
   ) {
@@ -65,6 +67,7 @@ export class EditBookmarkFormComponent implements OnInit {
     this.bookmarkService.editBookmark(this.bookmark).subscribe((editedBookmark) => {
       this.bookmarkService.emitBookmarkEdited(editedBookmark);
       this.dialogRef.close();
+      this.snackbarService.open("You have successfully updated this bookmark")
     },(error) => {
       console.log(error.error);
       this.errors = error.error;
@@ -78,6 +81,7 @@ export class EditBookmarkFormComponent implements OnInit {
         this.bookmarkService.deleteBookmark(this.bookmark).subscribe((deletedBookmark) => {
           this.bookmarkService.emitBookmarkDeleted(deletedBookmark);
           this.dialogRef.close();
+          this.snackbarService.open("You have successfully deleted this bookmark")
         })
       }
     });

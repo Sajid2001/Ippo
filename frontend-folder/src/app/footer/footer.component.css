@@ -1,0 +1,35 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+div{
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+  .footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    color: white;
+    background-color: black;
+  }
+
+  @media(max-width:768px){
+    .footer{
+        flex-direction: column;
+        font-size: medium;
+        text-align: center;
+    }
+    .spacer {
+        display: none;
+      }
+  }

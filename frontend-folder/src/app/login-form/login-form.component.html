@@ -1,0 +1,13 @@
+<form (submit)="onSubmit()">
+    <h2>Log In</h2>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" matInput [(ngModel)]="this.email" name="email"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [(ngModel)]="this.password" name="password"/>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Sign Up</button>
+    <p>Don't have an account? <a style="font-weight: bold;" href="/signup">Sign up</a></p>
+</form>

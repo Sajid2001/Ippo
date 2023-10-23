@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShowsComponent } from './shows/shows.component';
@@ -27,6 +28,11 @@ import { EditBookmarkFormComponent } from './edit-bookmark-form/edit-bookmark-fo
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { StreamLinksComponent } from './stream-links/stream-links.component';
 import { LoadingComponent } from './loading/loading.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -41,6 +47,11 @@ import { LoadingComponent } from './loading/loading.component';
     ConfirmDeleteComponent,
     StreamLinksComponent,
     LoadingComponent,
+    LoginPageComponent,
+    LoginFormComponent,
+    SignupPageComponent,
+    SignupFormComponent,
+    FooterComponent,
   ],
   entryComponents:[
     NewBookmarkFormComponent
@@ -60,7 +71,8 @@ import { LoadingComponent } from './loading/loading.component';
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
