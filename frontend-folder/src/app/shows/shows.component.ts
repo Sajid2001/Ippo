@@ -84,12 +84,12 @@ export class ShowsComponent implements OnInit {
     if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
       return 1; // 1 column for mobile view
     } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
-      return 3; // 3 columns for desktop view
+      return 2; // 3 columns for desktop view
     } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
-      return 4; // 2 columns for other screen sizes
+      return 3; // 2 columns for other screen sizes
     }
     else if (this.breakpointObserver.isMatched(Breakpoints.XLarge)) {
-      return 5; // 2 columns for other screen sizes
+      return 4; // 2 columns for other screen sizes
     }
     else {
       return 0

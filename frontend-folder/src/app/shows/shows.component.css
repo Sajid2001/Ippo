@@ -17,7 +17,7 @@ h2{
 
 .mat-grid-list{
    margin: auto;
-   max-width: 1500px;
+   max-width: 1200px;
    margin-bottom: 200px;
 }
 
@@ -38,4 +38,10 @@ h2{
    .example-form {
       max-width: 400px;
     }
+}
+
+@media (min-width:1919px) {
+   .mat-grid-list{
+      max-width: 1500px;
+   }
 }

@@ -1,7 +1,7 @@
 :host {
     display: flex;
     flex-direction: column;
-    max-height: 750px;
+    max-height: 700px;
     max-width: 600px;
   }
 
@@ -50,8 +50,8 @@
 }
 
 .result-image{
-  height: 250px;
-  width: 175px;
+  height: 225px;
+  width: 150px;
   object-fit: cover;
   border-radius: 15px;
 }
