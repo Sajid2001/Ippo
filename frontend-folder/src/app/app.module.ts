@@ -25,7 +25,6 @@ import { ShowCardComponent } from './show-card/show-card.component';
 import { HomeHeroComponent } from './home-hero/home-hero.component';
 import { NewBookmarkFormComponent } from './new-bookmark-form/new-bookmark-form.component';
 import { EditBookmarkFormComponent } from './edit-bookmark-form/edit-bookmark-form.component';
-import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { StreamLinksComponent } from './stream-links/stream-links.component';
 import { LoadingComponent } from './loading/loading.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -33,6 +32,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { FooterComponent } from './footer/footer.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -44,7 +44,6 @@ import { FooterComponent } from './footer/footer.component';
     HomeHeroComponent,
     NewBookmarkFormComponent,
     EditBookmarkFormComponent,
-    ConfirmDeleteComponent,
     StreamLinksComponent,
     LoadingComponent,
     LoginPageComponent,
@@ -52,6 +51,7 @@ import { FooterComponent } from './footer/footer.component';
     SignupPageComponent,
     SignupFormComponent,
     FooterComponent,
+    ConfirmDialogComponent,
   ],
   entryComponents:[
     NewBookmarkFormComponent

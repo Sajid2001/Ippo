@@ -16,7 +16,7 @@
     <textarea value="description" matInput [(ngModel)]="description"></textarea>
   </mat-form-field>
   <div class="button-panel">
-    <button mat-raised-button (click)="onClear()">Clear</button>
+    <button mat-raised-button (click)="openClearConfirmationDialog()">Clear</button>
     <button mat-raised-button (click)="onSubmit()" color="primary">Update</button>
     <button mat-raised-button color="warn" (click)="openDeleteConfirmationDialog()">Delete</button>
   </div>
