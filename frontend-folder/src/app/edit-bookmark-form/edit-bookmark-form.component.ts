@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Bookmark } from '../shared/bookmark.model';
 import { BookmarkService } from '../services/bookmark.service';
 import { SnackbarService } from '../services/snackbar.service';
@@ -18,7 +18,6 @@ export class EditBookmarkFormComponent implements OnInit {
     private bookmarkService: BookmarkService,
     private snackbarService: SnackbarService,
     private confirmDialogService: ConfirmDialogService,
-    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any 
   ) {
     this.bookmark = data.bookmark; 
