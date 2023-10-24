@@ -35,6 +35,20 @@ export class EditBookmarkFormComponent implements OnInit {
   description:string;
   customUrl:string;
 
+  episodesVisible():boolean{
+    if(this.bookmark.showType === 'TV' || this.bookmark.showType === 'ONA' || this.bookmark.showType === 'OVA'){
+      return true;
+    }
+    return false;
+  }
+
+  timestampVisible():boolean{
+    if(this.bookmark.showType === 'Movie' || this.bookmark.showType === 'Special'){
+      return true;
+    }
+    return false;
+  }
+
   Clear():void{
     this.bookmark.episodesWatched = 0;
     this.bookmark.lastSeenDescription = "";

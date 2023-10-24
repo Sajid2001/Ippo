@@ -1,5 +1,5 @@
 .screen{
-   min-height: 80vh
+   min-height: 100vh
 }
 
 h1{
@@ -36,7 +36,7 @@ h2{
 
 @media (max-width:600px) {
    .example-form {
-      max-width: 400px;
+      max-width: 350px;
     }
 }
 

@@ -1,9 +1,9 @@
 <h1>Edit Bookmark</h1>
-  <mat-form-field *ngIf="this.bookmark.showType === 'TV'">
+  <mat-form-field *ngIf="episodesVisible()">
     <mat-label>Episode Number</mat-label>
     <input type="number" min="0" value="episodeNumber" matInput [(ngModel)]="episodeNumber">
   </mat-form-field>
-  <mat-form-field *ngIf="this.bookmark.showType === 'Movie'">
+  <mat-form-field *ngIf="timestampVisible()">
     <mat-label>Timestamp</mat-label>
     <input value="timeStamp" matInput [(ngModel)]="timeStamp">
   </mat-form-field>
