@@ -30,6 +30,13 @@
     text-decoration: none;
 }
 
+@media (max-width:600px){
+    .poster a{
+        left: 50 !important;
+        bottom: 0;
+    }
+}
+
 .poster .after{
     position: absolute;
     top: 0;

@@ -1,4 +1,5 @@
 <h1>Edit Bookmark</h1>
+<h2>{{this.bookmark.name.slice(0,60).trim()}}<span *ngIf="this.bookmark.name.length > 60">...</span> </h2>
   <mat-form-field *ngIf="episodesVisible()">
     <mat-label>Episode Number</mat-label>
     <input type="number" min="0" value="episodeNumber" matInput [(ngModel)]="episodeNumber">

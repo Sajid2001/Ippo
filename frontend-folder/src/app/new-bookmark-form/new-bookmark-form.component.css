@@ -1,7 +1,7 @@
 :host {
     display: flex;
     flex-direction: column;
-    max-height: 700px;
+    max-height: 750px;
     max-width: 600px;
   }
 
@@ -23,12 +23,26 @@
     width: 50%;
   }
 
-  @media (max-width:600px) {
+  @media (max-width:479px) {
     :host{
-      max-width: 450px;
+      max-width: 400px;
     }
     .long-input-field{
-      min-width: 300px;
+      min-width: 250px;
+    }
+    .result-image{
+      height: 160px !important;
+      width: 120px !important;
+    }
+  }
+
+  @media screen and (max-width: 600px) and (min-width: 480px) {
+    :host {
+      max-width: 450px;
+    }
+  
+    .long-input-field {
+      min-width: 350px;
     }
   }
 

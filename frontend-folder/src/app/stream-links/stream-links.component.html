@@ -1,4 +1,4 @@
-<h1>{{name}} Links</h1>
+<h1>{{name.slice(0,35).trim()}}<span *ngIf="name.length > 35">...</span> Links</h1>
 <div class="list">
     <app-loading *ngIf="loading === true"></app-loading>
     <div *ngIf="loading === false">
@@ -28,7 +28,7 @@
             </a>
         </div>
         <div *ngIf="this.streamLinks.length === 0 && customUrl === '' && loading === false">
-            <h3>{{this.name}} has no links 😔</h3>
+            <h3>{{this.name.slice(0,25).trim()}} <span *ngIf="this.name.length > 25">...</span> has no links 😔</h3>
             <img class="gif" src="https://i.imgur.com/OgZjIr1.gif" alt="crying gif"/>
         </div>
     </div>

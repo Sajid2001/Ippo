@@ -16,9 +16,20 @@ form img{
     border-radius: 8px;
 }
 
-@media(max-width:768px) {
+@media (max-width:429px){
     form{
-        min-width: 350px;
+        min-width: 270px;
+        padding: 30px;
+    }
+    form img{
+        max-height: 100px;
+    }
+}
+
+@media screen and (max-width:768px) and (min-width:430px){
+    form{
+        min-width: 325px;
+        padding: 30px;
     }
     form img{
         max-height: 120px;

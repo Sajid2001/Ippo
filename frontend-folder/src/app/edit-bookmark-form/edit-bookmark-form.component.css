@@ -4,25 +4,56 @@
     align-items: center;
   }
 
+  :host h2{
+    font-weight: bold;
+    max-width: 400px;
+    text-align: center;
+  }
+
   .mat-form-field{
     min-width: 400px;
   }
 
   button{
     font-size: larger;
-    width: 50%;
     margin: 10px;
   }
 
   .button-panel{
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
   }
 
-@media (max-width:600px) {
+@media (max-width:429px){
+  .mat-form-field{
+    min-width: 250px;
+  }
+  .button-panel{
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+  }
+  .mat-raised-button{
+    min-width: 250px !important;
+  }
+  h2{
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width:600px) and (min-width:430px) {
+  h2{
+    max-width: 350px;
+  }
   .mat-form-field{
     min-width: 300px;
   }
+  .mat-raised-button{
+    min-width: 50px !important;
+  }
+
 }
 
 .error-text{
