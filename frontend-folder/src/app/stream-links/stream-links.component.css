@@ -1,6 +1,7 @@
 h1{
     font-weight: bold;
     font-size: x-large;
+    max-width: 300px;
 }
 
 .list{
