@@ -54,9 +54,7 @@ public class UserController {
             Integer userId = userService.registerUser(user);
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
             String token = tokenService.generateToken(authentication);
-            user.setUserId(userId);
             Map<String, Object> response = new HashMap<>();
-            response.put("userId", userId);
             response.put("email", user.getEmail());
             response.put("token", token);
             return ResponseEntity.ok(response);
