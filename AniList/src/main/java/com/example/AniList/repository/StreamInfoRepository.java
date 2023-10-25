@@ -23,12 +23,12 @@ public class StreamInfoRepository {
         return jdbcTemplate.query(sql, new StreamInfoRowMapper());
     }
 
-    public ResponseEntity<StreamInfo> getStreamInfoById(int streamInfoId) {
-        String sql = "SELECT * FROM stream_info WHERE id=?";
+    public ResponseEntity<StreamInfo> getStreamInfoByStreamInfoId(int stream_info_id) {
+        String sql = "SELECT * FROM stream_info WHERE stream_info_id=?";
         StreamInfo streamInfo;
         try
         {
-            streamInfo = jdbcTemplate.queryForObject(sql, new Object[]{streamInfoId}, new StreamInfoRowMapper());
+            streamInfo = jdbcTemplate.queryForObject(sql, new Object[]{stream_info_id}, new StreamInfoRowMapper());
             return ResponseEntity.ok(streamInfo);
         }
         catch (EmptyResultDataAccessException ex)
@@ -56,15 +56,15 @@ public class StreamInfoRepository {
         jdbcTemplate.update(sql, streamInfo.getShowId(), streamInfo.getStream(), streamInfo.getUrl());
     }
 
-    public void updateStreamInfo(int streamInfoId, StreamInfo streamInfo)
+    public void updateStreamInfo(int stream_info_id, StreamInfo streamInfo)
     {
-        String sql = "UPDATE stream_info SET stream=?, url=?, WHERE id=?";
-        jdbcTemplate.update(sql, streamInfo.getStream(), streamInfo.getUrl(), streamInfoId);
+        String sql = "UPDATE stream_info SET stream=?, url=?, WHERE stream_info_id=?";
+        jdbcTemplate.update(sql, streamInfo.getStream(), streamInfo.getUrl(), stream_info_id);
     }
 
-    public void deleteStreamInfo(int streamInfoId)
+    public void deleteStreamInfo(int stream_info_id)
     {
-        String sql = "DELETE FROM stream_info WHERE id=?";
-        jdbcTemplate.update(sql, streamInfoId);
+        String sql = "DELETE FROM stream_info WHERE stream_info_id=?";
+        jdbcTemplate.update(sql, stream_info_id);
     }
 }

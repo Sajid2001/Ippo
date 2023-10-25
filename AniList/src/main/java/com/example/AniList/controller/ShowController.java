@@ -5,13 +5,21 @@ import com.example.AniList.model.ShowDTO;
 import com.example.AniList.model.StreamInfo;
 import com.example.AniList.repository.ShowRepository;
 import com.example.AniList.repository.StreamInfoRepository;
+import com.example.AniList.repository.UserRepository;
 import com.example.AniList.service.ShowService;
 import com.example.AniList.service.StreamInfoService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -21,13 +29,15 @@ public class ShowController {
     private final StreamInfoService streamInfoService;
     private final ShowRepository showRepository;
     private final StreamInfoRepository streamInfoRepository;
+    private final UserRepository userRepository;
 
-    public ShowController(ShowService showService, StreamInfoService streamInfoService, ShowRepository showRepository, StreamInfoRepository streamInfoRepository)
+    public ShowController(ShowService showService, StreamInfoService streamInfoService, ShowRepository showRepository, StreamInfoRepository streamInfoRepository, UserRepository userRepository)
     {
         this.showService = showService;
         this.streamInfoService = streamInfoService;
         this.showRepository = showRepository;
         this.streamInfoRepository = streamInfoRepository;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/bookmarks")
@@ -45,10 +55,10 @@ public class ShowController {
         }
     }
 
-    @GetMapping("/bookmarks/{id}")
-    public ResponseEntity<?> getShowById(@PathVariable Integer id)
+    @GetMapping("/bookmarks/{showId}")
+    public ResponseEntity<?> getShowById(@PathVariable Integer showId)
     {
-        ResponseEntity<Show> showResponse = showRepository.getShowById(id);
+        ResponseEntity<Show> showResponse = showRepository.getShowByShowId(showId);
         if(showResponse.getStatusCode() == HttpStatus.OK)
         {
             Show show = showResponse.getBody();
@@ -64,6 +74,8 @@ public class ShowController {
     @PostMapping("/bookmarks")
     public ResponseEntity<Object> addShow(@Valid @RequestBody Show show)
     {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Integer userId = userRepository.getUserIdByEmail(authentication.getName()).getBody();
         String query = show.getName();
         Integer showId = showRepository.saveShow(show);
         List<StreamInfo> streamingInfo = streamInfoService.scrapeLiveChart(query);
@@ -79,15 +91,16 @@ public class ShowController {
                 show.setTimeStamp("00:00:00");
             }
         }
-        show.setId(showId);
+        show.setShowId(showId);
+        show.setUserId(userId);
         return ResponseEntity.ok(show);
     }
 
     //Look for more efficient way
-    @PutMapping("/bookmarks/{id}")
-    public ResponseEntity<Show> updateShow(@PathVariable Integer id, @Valid @RequestBody Show updatedShow)
+    @PutMapping("/bookmarks/{showId}")
+    public ResponseEntity<Show> updateShow(@PathVariable Integer showId, @Valid @RequestBody Show updatedShow)
     {
-        ResponseEntity<Show> showResponse = showRepository.getShowById(id);
+        ResponseEntity<Show> showResponse = showRepository.getShowByShowId(showId);
         if(showResponse.getStatusCode() == HttpStatus.OK)
         {
             Show existingShow = showResponse.getBody();
@@ -123,7 +136,7 @@ public class ShowController {
             {
                 existingShow.setTimeStamp(updatedShow.getTimeStamp());
             }
-            showRepository.updateShow(id, existingShow);
+            showRepository.updateShow(showId, existingShow);
             return ResponseEntity.ok(existingShow);
         }
         else
@@ -133,14 +146,14 @@ public class ShowController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/bookmarks/{id}")
-    public ResponseEntity<Show> deleteShow(@PathVariable Integer id)
+    @DeleteMapping("/bookmarks/{showId}")
+    public ResponseEntity<Show> deleteShow(@PathVariable Integer showId)
     {
-        ResponseEntity<Show> showResponse = showRepository.getShowById(id);
+        ResponseEntity<Show> showResponse = showRepository.getShowByShowId(showId);
         if(showResponse.getStatusCode() == HttpStatus.OK)
         {
             Show deletedShow = showResponse.getBody();
-            showRepository.deleteShow(id);
+            showRepository.deleteShow(showId);
             return ResponseEntity.ok(deletedShow);
         }
         else

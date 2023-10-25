@@ -27,8 +27,8 @@ public class User {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(Integer user_id) {
+        this.userId = user_id;
     }
 
     public String getEmail() {

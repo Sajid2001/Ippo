@@ -11,7 +11,7 @@ public class StreamInfoRowMapper implements RowMapper<StreamInfo>
     public StreamInfo mapRow(ResultSet resultSet, int rowNum) throws SQLException
     {
         StreamInfo streamInfo = new StreamInfo();
-        streamInfo.setId(resultSet.getInt("id"));
+        streamInfo.setStreamInfoId(resultSet.getInt("stream_info_id"));
         streamInfo.setShowId(resultSet.getInt("show_id"));
         streamInfo.setStream(resultSet.getString("stream"));
         streamInfo.setUrl(resultSet.getString("url"));

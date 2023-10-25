@@ -47,7 +47,25 @@ public class UserRepository {
         }
     }
 
-
+    public ResponseEntity<Integer> getUserIdByEmail(String email) {
+        String sql = "SELECT user_id FROM users WHERE email = ?";
+        try
+        {
+            Integer userId = jdbcTemplate.queryForObject(sql, new Object[]{email}, Integer.class);
+            if (userId != null)
+            {
+                return ResponseEntity.ok(userId);
+            }
+            else
+            {
+                return ResponseEntity.notFound().build();
+            }
+        }
+        catch (EmptyResultDataAccessException e)
+        {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
     public int saveUser(User user)
     {
