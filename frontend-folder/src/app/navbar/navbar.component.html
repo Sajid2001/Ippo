@@ -4,7 +4,17 @@
       <span>Ippo!!</span>
     </a>
     <span class="example-spacer"></span>
-    <div class="navbar-list">
+
+    <div *ngIf="LoggedIn()" class="navbar-list">
+      <p class="navbar-item">
+        {{this.user.email}}
+      </p>
+      <button style="color: black;" mat-raised-button class="navbar-item" (click)="LogOut()">
+        Log Out
+      </button>
+  </div>
+
+    <div *ngIf="!LoggedIn()" class="navbar-list">
       <a class="navbar-item" href="/login">
         Log In
       </a>

@@ -3,19 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShowsComponent } from './shows/shows.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { AuthGuard } from './auth.guard';
+import { LoggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
   {
     path:'',
-    component: ShowsComponent
+    component: ShowsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'signup',
-    component: SignupPageComponent
+    component: SignupPageComponent,
+    canActivate:[LoggedInGuard]
   },
   {
     path:'login',
-    component: LoginPageComponent
+    component: LoginPageComponent,
+    canActivate:[LoggedInGuard]
   }
 ];
 

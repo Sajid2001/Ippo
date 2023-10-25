@@ -27,6 +27,11 @@
     text-decoration: none;
 }
 
+.navbar-list{
+  display: flex;
+  flex-direction: row;
+}
+
 .navbar-item:hover{
     opacity: 80%;
 }
