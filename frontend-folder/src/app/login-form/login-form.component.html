@@ -10,4 +10,5 @@
     </mat-form-field>
     <button mat-raised-button type="submit">Sign In</button>
     <p>Don't have an account? <a style="font-weight: bold;" href="/signup">Sign up</a></p>
+    <p style="margin: 0; padding: 0; color: red; " *ngIf="error !== '' ">{{error}}</p>
 </form>

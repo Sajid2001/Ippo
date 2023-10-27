@@ -23,6 +23,7 @@ export class ShowsComponent implements OnInit {
   filteredBookmarks: Bookmark[] = this.bookmarks; 
 
   ngOnInit() {
+
     this.retrieveBookmarks();
 
     this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Web]).subscribe(() => {
@@ -46,7 +47,7 @@ export class ShowsComponent implements OnInit {
   editSingleBookmark():void{
     this.bookmarkService.bookmarkEdited$.subscribe((editedBookmark) => {
       // Find the index of the edited bookmark in the array
-      const index = this.bookmarks.findIndex((bookmark) => bookmark.id === editedBookmark.id);
+      const index = this.bookmarks.findIndex((bookmark) => bookmark.showId === editedBookmark.showId);
   
       // Update the bookmark in the array with the edited one
       if (index !== -1) {
@@ -57,8 +58,8 @@ export class ShowsComponent implements OnInit {
 
   deleteBookmark(): void {
     this.bookmarkService.bookmarkDeleted$.subscribe((deletedBookmark) => { 
-      console.log(deletedBookmark.id); // Log the ID
-      const index = this.bookmarks.findIndex((bookmark) => bookmark.id === deletedBookmark.id);
+      console.log(deletedBookmark.showId); // Log the ID
+      const index = this.bookmarks.findIndex((bookmark) => bookmark.showId === deletedBookmark.showId);
       console.log(index); // Log the index
       if (index !== -1) {
         this.bookmarks.splice(index, 1);

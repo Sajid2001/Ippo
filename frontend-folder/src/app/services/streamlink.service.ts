@@ -11,7 +11,9 @@ export class StreamlinkService {
 
   private apiUrl:string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+  ) { }
 
   getStreamLinksByID(bookmark_id:number): Observable<StreamLink[]> {
     const url = `${this.apiUrl}/scrape/show/${bookmark_id}`;

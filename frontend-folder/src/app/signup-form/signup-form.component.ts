@@ -15,6 +15,7 @@ export class SignupFormComponent implements OnInit {
 
   email:string = ''
   password:string = ''
+  error:string = ''
 
   constructor(
     private userService:UserService,
@@ -35,12 +36,16 @@ export class SignupFormComponent implements OnInit {
     
     this.userService.Register(newUser).subscribe(
       result => {
-        localStorage.setItem('token', JSON.stringify(result))
+        localStorage.setItem('token', result.token)
+        localStorage.setItem('email', result.email)
         this.router.navigate([''])
+        this.snackbarService.open("You have successfully signed up")
       },
-      err => console.log(err)
+      (err) => {
+        console.log(err);
+        this.error = err.error.error;
+      }
     )
-    this.snackbarService.open("You have successfully signed up")
   }
 
 }

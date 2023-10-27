@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'; 
@@ -18,6 +18,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatMenuModule} from '@angular/material/menu'
+import {MatListModule} from '@angular/material/list'; 
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShowsComponent } from './shows/shows.component';
@@ -33,6 +35,7 @@ import { SignupPageComponent } from './signup-page/signup-page.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { TokenInterceptor } from './token.interceptor';
 
 
 @NgModule({
@@ -72,9 +75,17 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     MatFormFieldModule,
     MatDialogModule,
     MatSlideToggleModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatMenuModule,
+    MatListModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   }),
 };
 
@@ -17,6 +17,7 @@ const httpOptions = {
 export class BookmarkService {
 
   private apiUrl:string = environment.apiUrl;
+  
 
   private bookmarkAddedSubject = new Subject<Bookmark>();
   bookmarkAdded$ = this.bookmarkAddedSubject.asObservable();
@@ -27,7 +28,9 @@ export class BookmarkService {
   private bookmarkDeletedSubject = new Subject<Bookmark>();
   bookmarkDeleted$ = this.bookmarkDeletedSubject.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+  ) {}
 
   getBookmarks(): Observable<Bookmark[]> {
     const url = `${this.apiUrl}/bookmarks`;
@@ -40,13 +43,13 @@ export class BookmarkService {
   }
 
   editBookmark(bookmark: Bookmark):  Observable<Bookmark> {
-    const url = `${this.apiUrl}/bookmarks/${bookmark.id}`;
+    const url = `${this.apiUrl}/bookmarks/${bookmark.showId}`;
     return this.http.put<Bookmark>(url, bookmark, httpOptions);
   }
 
   deleteBookmark(bookmark: Bookmark):  Observable<Bookmark> {
-    const url = `${this.apiUrl}/bookmarks/${bookmark.id}`;
-    return this.http.delete<Bookmark>(url);
+    const url = `${this.apiUrl}/bookmarks/${bookmark.showId}`;
+    return this.http.delete<Bookmark>(url, httpOptions);
   }
 
   emitBookmarkAdded(addedBookmark: Bookmark) {

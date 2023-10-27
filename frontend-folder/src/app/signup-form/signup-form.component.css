@@ -22,7 +22,7 @@ form img{
         padding: 30px;
     }
     form img{
-        max-height: 100px;
+        max-height: 80px;
     }
 }
 
@@ -32,7 +32,7 @@ form img{
         padding: 30px;
     }
     form img{
-        max-height: 120px;
+        max-height: 100px;
     }
 }
 
@@ -42,7 +42,7 @@ form img{
         margin-top: 40px;
     }
     form img{
-        max-height: 140px;
+        max-height: 120px;
     }
 }
 

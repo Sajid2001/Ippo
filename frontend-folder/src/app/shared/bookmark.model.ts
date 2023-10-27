@@ -1,6 +1,7 @@
 
 export interface Bookmark {
-    id?:Number,
+    showId?:Number,
+    userId?:Number,
     name: string;
     malUrl: string;
     customUrl:string;

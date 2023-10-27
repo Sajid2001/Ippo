@@ -8,7 +8,7 @@
 .poster{
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: 120vh;
 }
 
 .poster img{
@@ -30,10 +30,16 @@
     text-decoration: none;
 }
 
-@media (max-width:600px){
+@media (max-width:841px){
+    .poster{
+        height: 90vh;
+    }
     .poster a{
-        left: 50 !important;
-        bottom: 0;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
 }
 

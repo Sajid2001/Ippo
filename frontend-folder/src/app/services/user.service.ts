@@ -32,6 +32,7 @@ export class UserService {
 
   logoutUser() {
     localStorage.removeItem('token')
+    localStorage.removeItem('email')
   }
 
   getToken() {

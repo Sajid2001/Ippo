@@ -29,7 +29,7 @@
       </mat-form-field>
     </div>
     <mat-form-field class="long-input-field">
-      <mat-label>What do you last remember?</mat-label>
+      <mat-label>What do you last remember? (Optional)</mat-label>
       <input matInput [(ngModel)]="newBookmark.lastSeenDescription"/>
     </mat-form-field>
     <button style="margin-bottom: 10px;" *ngIf="!loading" mat-raised-button (click)="onSubmit()">Submit</button>

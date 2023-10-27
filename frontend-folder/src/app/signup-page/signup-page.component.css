@@ -1,14 +1,7 @@
-.screen{ 
-    margin-bottom: 20px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    overflow: hidden;
-}
-
 .poster{
     position: relative;
     overflow: hidden;
-    height: 100vh;
+    height: 120vh;
 }
 
 .poster img{
@@ -27,6 +20,19 @@
     font-size: large;
     font-weight: bold;
     text-decoration: none;
+}
+
+@media (max-width:843px){
+    .poster{
+        height: 90vh;
+    }
+    .poster a{
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 }
 
 .poster .after{

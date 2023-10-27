@@ -43,7 +43,7 @@ export class ShowCardComponent implements OnInit {
     const dialogRef = this.dialog.open(StreamLinksComponent,{
       data:{
         name:this.bookmark.name,
-        id: this.bookmark.id,
+        id: this.bookmark.showId,
         customUrl: this.bookmark.customUrl
       }
     })
