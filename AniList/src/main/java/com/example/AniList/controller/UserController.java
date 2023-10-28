@@ -1,6 +1,5 @@
 package com.example.AniList.controller;
 
-import ch.qos.logback.core.joran.conditional.ElseAction;
 import com.example.AniList.exception.UserBadRequestExceptionHandler;
 import com.example.AniList.model.User;
 import com.example.AniList.model.UserLoginDTO;
@@ -8,7 +7,6 @@ import com.example.AniList.repository.UserRepository;
 import com.example.AniList.service.TokenService;
 import com.example.AniList.service.UserService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -75,4 +73,5 @@ public class UserController {
             return ResponseEntity.ok(response);
         }
     }
+
 }

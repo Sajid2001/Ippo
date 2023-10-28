@@ -8,7 +8,7 @@
     </mat-form-field>
   </form>
   
-  <app-loading *ngIf="loading"></app-loading>
+  <mat-spinner class="spinner" diameter="80" *ngIf="loading"></mat-spinner>
   <h2 *ngIf="this.bookmarks.length == 0 && !loading">It appears like you don't have any bookmarks. Click the button above to create some.</h2>
   <mat-grid-list [cols]="getGridCols()" *ngIf="!loading && this.bookmarks.length > 0" rowHeight="450px" [gutterSize]="'10px'">
     <div *ngFor="let bookmark of filteredBookmarks">

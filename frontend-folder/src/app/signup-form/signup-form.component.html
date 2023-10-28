@@ -1,4 +1,4 @@
-<form (submit)="onSubmit()">
+<form [class.loading-rounded]="loading" (submit)="onSubmit()">
     <img src="../../assets/logo.png"/>
     <h2>Sign Up</h2>
     <mat-form-field>
@@ -11,5 +11,11 @@
     </mat-form-field>
     <button mat-raised-button type="submit">Sign Up</button>
     <p>Have an account? <a style="font-weight: bold;" href="/login">Sign in</a></p>
-    <p style="margin: 0; padding: 0; color: red; " *ngIf="error !== '' ">{{error}}</p>
+    <div style="margin: 0;" *ngIf="errors && errors != {}">
+        <p class="error-text" *ngFor="let error of errors | keyvalue">
+          - {{ error.value }}
+        </p>
+    </div>
+    <mat-progress-bar class="loading-bar" color="accent" *ngIf="loading" mode="indeterminate" ></mat-progress-bar>
 </form>
+

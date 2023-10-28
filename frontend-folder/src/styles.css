@@ -11,6 +11,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
   .custom-snackbar button{
     font-weight: bold;
     margin-left: 20px;
+    color: red;
   }
 
   input[type="password"] {

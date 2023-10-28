@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
   email:string = ''
   password:string = ''
   error:string = ''
+  loading:boolean = false;
 
   constructor(
     private userService: UserService,
@@ -25,7 +26,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit():void{
-    console.log(this.email, this.password); 
+    this.loading = true;
 
     const user:User = {
       email:this.email,
@@ -40,7 +41,11 @@ export class LoginFormComponent implements OnInit {
         this.snackbarService.open("You have sucessfully logged in")
       },
       (err) => {
+        console.log(err);
         this.error = err.error.error
+        this.loading = false
+      },() => {
+        this.loading = false
       }  
     )
     

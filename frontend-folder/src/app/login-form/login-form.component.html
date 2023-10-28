@@ -8,7 +8,12 @@
         <mat-label>Password</mat-label>
         <input type="password" matInput [(ngModel)]="this.password" name="password"/>
     </mat-form-field>
-    <button mat-raised-button type="submit">Sign In</button>
+    <button mat-raised-button [disabled]="loading" type="submit">
+        Sign In
+    </button>
+    
     <p>Don't have an account? <a style="font-weight: bold;" href="/signup">Sign up</a></p>
-    <p style="margin: 0; padding: 0; color: red; " *ngIf="error !== '' ">{{error}}</p>
+    <p class="error-text" *ngIf="error !== '' ">{{error}}</p>
+    <mat-progress-bar class="loading-bar" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 </form>
+

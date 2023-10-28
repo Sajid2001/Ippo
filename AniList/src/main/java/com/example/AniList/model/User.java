@@ -6,10 +6,16 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
 public class User {
-    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Integer userId;
-    private @Email @NotBlank(message = "Email cannot be blank") String email;
-    private @Size(min = 8, max = 20, message = "Password must be between 8 and 20 characters long.") String password;
-    //@Pattern(regexp = "^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$"
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer userId;
+    @Email( message = "Must be a valid email address")
+    @NotBlank(message = "Email cannot be blank")
+    private String email;
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[!.,/]).{8,}$", message = "Must be at least 8 letters long" +
+            " and contain an uppercase, lowercase, and special character")
+    private String password;
+
 
     public User(Integer userId, String email, String password)
     {

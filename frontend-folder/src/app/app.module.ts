@@ -20,6 +20,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatMenuModule} from '@angular/material/menu'
 import {MatListModule} from '@angular/material/list'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShowsComponent } from './shows/shows.component';
@@ -28,7 +30,6 @@ import { HomeHeroComponent } from './home-hero/home-hero.component';
 import { NewBookmarkFormComponent } from './new-bookmark-form/new-bookmark-form.component';
 import { EditBookmarkFormComponent } from './edit-bookmark-form/edit-bookmark-form.component';
 import { StreamLinksComponent } from './stream-links/stream-links.component';
-import { LoadingComponent } from './loading/loading.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SignupPageComponent } from './signup-page/signup-page.component';
@@ -48,7 +49,6 @@ import { TokenInterceptor } from './token.interceptor';
     NewBookmarkFormComponent,
     EditBookmarkFormComponent,
     StreamLinksComponent,
-    LoadingComponent,
     LoginPageComponent,
     LoginFormComponent,
     SignupPageComponent,
@@ -77,7 +77,9 @@ import { TokenInterceptor } from './token.interceptor';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [
     {

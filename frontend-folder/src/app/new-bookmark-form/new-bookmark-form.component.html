@@ -4,7 +4,7 @@
     <input matInput [(ngModel)]="searchName">
   </mat-form-field>
 
-  <button mat-raised-button (click)="onSearch()">Search</button>
+  <button mat-raised-button [disabled]="loading" (click)="onSearch()">Search</button>
 
   <div *ngIf="searchResults && searchResults.length > 0" class="results-display">
     <div class="result-card" *ngFor="let result of visibleResults" (click)="selectItem(result)">
@@ -32,7 +32,7 @@
       <mat-label>What do you last remember? (Optional)</mat-label>
       <input matInput [(ngModel)]="newBookmark.lastSeenDescription"/>
     </mat-form-field>
-    <button style="margin-bottom: 10px;" *ngIf="!loading" mat-raised-button (click)="onSubmit()">Submit</button>
+    <button mat-raised-button [disabled]="loading" (click)="onSubmit()">Submit</button>
 </div>
 
 <div *ngIf="errors && errors != {} && !loading">
@@ -40,6 +40,5 @@
     {{ error.value }}
   </p>
 </div>
-
-<app-loading *ngIf="loading"></app-loading>
+<mat-progress-bar class="loading-bar" color="accent" *ngIf="loading" mode="indeterminate"></mat-progress-bar>
   

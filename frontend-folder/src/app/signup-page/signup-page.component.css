@@ -24,7 +24,7 @@
 
 @media (max-width:843px){
     .poster{
-        height: 90vh;
+        height: 100vh;
     }
     .poster a{
         left: 0;

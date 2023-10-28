@@ -15,7 +15,8 @@ export class SignupFormComponent implements OnInit {
 
   email:string = ''
   password:string = ''
-  error:string = ''
+  errors: { [key: string]: string } = {};
+  loading:boolean = false;
 
   constructor(
     private userService:UserService,
@@ -27,8 +28,7 @@ export class SignupFormComponent implements OnInit {
   }
 
   onSubmit():void{
-    console.log(this.email, this.password);
-
+    this.loading = true
     const newUser:User = {
       email:this.email, 
       password:this.password
@@ -43,7 +43,10 @@ export class SignupFormComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-        this.error = err.error.error;
+        this.errors = err.error;
+        this.loading = false;
+      }, () => {
+        this.loading = false
       }
     )
   }

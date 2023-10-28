@@ -1,5 +1,5 @@
 
-  <mat-toolbar class="navbar">
+  <mat-toolbar [class.navbar-mobile-open]="menuOpened && mobileView" class="navbar">
     <a href="/" class="navbar-header">
       <img src="../../assets/logo.png"/>
       <span>Ippo!!</span>
