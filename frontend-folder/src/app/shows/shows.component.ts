@@ -20,6 +20,7 @@ export class ShowsComponent implements OnInit {
   bookmarks:Bookmark[] = [];
   loading:boolean = false;
   searchText: string = ''; 
+  afterLoadText:string = "It appears like you do not have any bookmarks. Click the button above to create some."
   filteredBookmarks: Bookmark[] = this.bookmarks; 
 
   ngOnInit() {
@@ -75,6 +76,8 @@ export class ShowsComponent implements OnInit {
     },
     (error) => {
       console.log(error);
+      this.loading = false;
+      this.afterLoadText = "It appears something went wrong. Try again later."
     },
     ()=>{
       this.loading = false;
@@ -82,11 +85,11 @@ export class ShowsComponent implements OnInit {
   }
 
   getGridCols(): number {
-    if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+    if (this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
       return 1; // 1 column for mobile view
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+    } else if (this.breakpointObserver.isMatched([Breakpoints.Small])) {
       return 2; // 3 columns for desktop view
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
+    } else if (this.breakpointObserver.isMatched([Breakpoints.Large,Breakpoints.Medium])) {
       return 3; // 2 columns for other screen sizes
     }
     else if (this.breakpointObserver.isMatched(Breakpoints.XLarge)) {

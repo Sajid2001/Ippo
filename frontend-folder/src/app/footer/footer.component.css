@@ -1,7 +1,3 @@
-.spacer {
-    flex: 1 1 auto;
-  }
-
 div{
     margin-right: 20px;
     margin-left: 20px;
@@ -15,7 +11,8 @@ a{
 
   .footer{
     display: flex;
-    flex-direction: row;
+    font-size: 20px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 150px;
@@ -25,7 +22,6 @@ a{
 
   @media(max-width:768px){
     .footer{
-        flex-direction: column;
         font-size: medium;
         text-align: center;
     }

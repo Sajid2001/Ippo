@@ -18,8 +18,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
-import {MatMenuModule} from '@angular/material/menu'
-import {MatListModule} from '@angular/material/list'; 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
@@ -76,8 +74,6 @@ import { TokenInterceptor } from './token.interceptor';
     MatDialogModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatMenuModule,
-    MatListModule,
     MatProgressSpinnerModule,
     MatProgressBarModule
   ],

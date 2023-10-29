@@ -2,13 +2,6 @@
    min-height: 100vh
 }
 
-h1{
-   font-size: xx-large; 
-   text-align: center;
-   margin: 100px;
-   font-weight: bold;
-}
-
 h2{
    text-align: center;
    margin: 100px;
@@ -18,7 +11,7 @@ h2{
 .mat-grid-list{
    margin: auto;
    max-width: 1100px;
-   margin-bottom: 200px;
+   margin-bottom: 100px;
 }
 
 .example-form {
@@ -38,9 +31,13 @@ h2{
    .example-form {
       max-width: 350px;
     }
+    h2{
+      font-size: medium;
+      margin: 50px;
+    }
 }
 
-@media screen and (min-width: 960px) and (max-width: 1279.98px) {
+@media (max-width: 960px) {
    .mat-grid-list{
       max-width: 750px;
    }
