@@ -4,19 +4,29 @@
 @include mat.core();
 
 $light-primary: mat.define-palette(mat.$indigo-palette);
-$light-accent: mat.define-palette(mat.$pink-palette);
+$light-accent: mat.define-palette(mat.$blue-grey-palette);
 $light-warn: mat.define-palette(mat.$red-palette);
 
 $dark-primary: mat.define-palette(mat.$grey-palette);
 $dark-accent: mat.define-palette(mat.$grey-palette, A200, A100, A400);
 $dark-warn: mat.define-palette(mat.$red-palette);
 
+$my-typography-one: mat.define-typography-config(
+  $font-family: 'Zen Kaku Gothic New',
+);
+
+$my-typography-two: mat.define-typography-config(
+  $font-family: 'Kaisei Decol',
+);
+
+
 $light-theme: mat.define-light-theme((
   color: (
     primary: $light-primary,
     accent: $light-accent,
     warn: $light-warn,
-  )
+  ),
+  typography: $my-typography-one,
 ));
 
 $dark-theme: mat.define-dark-theme((
@@ -28,3 +38,4 @@ $dark-theme: mat.define-dark-theme((
 ));
 
 @include mat.all-component-themes($light-theme);
+@include mat.typography-hierarchy($my-typography-one);

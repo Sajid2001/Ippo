@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/api")
 public class StreamInfoController {
     private final StreamInfoService streamInfoService;
@@ -24,7 +23,7 @@ public class StreamInfoController {
     @GetMapping("/scrape")
     public ResponseEntity<?> getStreamInfo(@RequestParam(required = false) String query)
     {
-        if (query != null)
+        if(query != null)
         {
             List<StreamInfo> searchResults = streamInfoService.scrapeLiveChart(query);
             return ResponseEntity.ok(searchResults);
@@ -36,10 +35,10 @@ public class StreamInfoController {
         }
     }
 
-    @GetMapping("/scrape/{id}")
-    public ResponseEntity<?> getStreamInfoById(@PathVariable Integer id)
+    @GetMapping("/scrape/{showId}")
+    public ResponseEntity<?> getStreamInfoById(@PathVariable Integer showId)
     {
-        ResponseEntity<StreamInfo> streamInfoResponse = streamInfoRepository.getStreamInfoById(id);
+        ResponseEntity<StreamInfo> streamInfoResponse = streamInfoRepository.getStreamInfoByStreamInfoId(showId);
         if(streamInfoResponse.getStatusCode() == HttpStatus.OK)
         {
             StreamInfo streamInfo = streamInfoResponse.getBody();
@@ -52,10 +51,10 @@ public class StreamInfoController {
     }
 
     //Uses the showId to return all stream links for a show
-    @GetMapping("/scrape/show/{show_id}")
-    public ResponseEntity<?> getStreamInfoByShowId(@PathVariable Integer show_id)
+    @GetMapping("/scrape/show/{showId}")
+    public ResponseEntity<?> getStreamInfoByShowId(@PathVariable Integer showId)
     {
-        ResponseEntity<List<StreamInfo>> streamInfoResponse = streamInfoRepository.getStreamInfoByShowId(show_id);
+        ResponseEntity<List<StreamInfo>> streamInfoResponse = streamInfoRepository.getStreamInfoByShowId(showId);
         if(streamInfoResponse.getStatusCode() == HttpStatus.OK)
         {
             List<StreamInfo> streamInfo = streamInfoResponse.getBody();
@@ -74,10 +73,10 @@ public class StreamInfoController {
         streamInfoRepository.saveStreamInfo(streamInfo);
     }
 
-    @PutMapping("/scrape/{id}")
-    public ResponseEntity<StreamInfo> updateStreamInfo(@PathVariable Integer id, @RequestBody StreamInfo updatedStreamInfo)
+    @PutMapping("/scrape/{streamInfoId}")
+    public ResponseEntity<StreamInfo> updateStreamInfo(@PathVariable Integer streamInfoId, @RequestBody StreamInfo updatedStreamInfo)
     {
-        ResponseEntity<StreamInfo> streamInfoResponse = streamInfoRepository.getStreamInfoById(id);
+        ResponseEntity<StreamInfo> streamInfoResponse = streamInfoRepository.getStreamInfoByStreamInfoId(streamInfoId);
         if(streamInfoResponse.getStatusCode() == HttpStatus.OK)
         {
             StreamInfo existingStreamInfo = streamInfoResponse.getBody();
@@ -89,7 +88,7 @@ public class StreamInfoController {
             {
                 existingStreamInfo.setUrl(updatedStreamInfo.getStream());
             }
-            streamInfoRepository.updateStreamInfo(id,existingStreamInfo);
+            streamInfoRepository.updateStreamInfo(streamInfoId, existingStreamInfo);
             return ResponseEntity.ok(existingStreamInfo);
         }
         else
@@ -99,14 +98,14 @@ public class StreamInfoController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/scrape/{id}")
-    public ResponseEntity<StreamInfo> deleteStreamInfo(@PathVariable Integer id)
+    @DeleteMapping("/scrape/{streamInfoId}")
+    public ResponseEntity<StreamInfo> deleteStreamInfo(@PathVariable Integer streamInfoId)
     {
-        ResponseEntity<StreamInfo> streamInfoResponse = streamInfoRepository.getStreamInfoById(id);
+        ResponseEntity<StreamInfo> streamInfoResponse = streamInfoRepository.getStreamInfoByStreamInfoId(streamInfoId);
         if (streamInfoResponse.getStatusCode() == HttpStatus.OK)
         {
             StreamInfo deletedStreamInfo = streamInfoResponse.getBody();
-            streamInfoRepository.deleteStreamInfo(id);
+            streamInfoRepository.deleteStreamInfo(streamInfoId);
             return ResponseEntity.ok(deletedStreamInfo);
         }
         else

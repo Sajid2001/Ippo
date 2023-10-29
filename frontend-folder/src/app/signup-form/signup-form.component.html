@@ -1,0 +1,21 @@
+<form [class.loading-rounded]="loading" (submit)="onSubmit()">
+    <img src="../../assets/logo.png"/>
+    <h2>Sign Up</h2>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input type="text" matInput [(ngModel)]="this.email" name="email"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [(ngModel)]="this.password" name="password"/>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Sign Up</button>
+    <p>Have an account? <a style="font-weight: bold;" href="/login">Sign in</a></p>
+    <div style="margin: 0;" *ngIf="errors && errors != {}">
+        <p class="error-text" *ngFor="let error of errors | keyvalue">
+          - {{ error.value }}
+        </p>
+    </div>
+    <mat-progress-bar class="loading-bar" color="accent" *ngIf="loading" mode="indeterminate" ></mat-progress-bar>
+</form>
+

@@ -20,9 +20,11 @@ export class ShowsComponent implements OnInit {
   bookmarks:Bookmark[] = [];
   loading:boolean = false;
   searchText: string = ''; 
+  afterLoadText:string = "It appears like you do not have any bookmarks. Click the button above to create some."
   filteredBookmarks: Bookmark[] = this.bookmarks; 
 
   ngOnInit() {
+
     this.retrieveBookmarks();
 
     this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Web]).subscribe(() => {
@@ -46,7 +48,7 @@ export class ShowsComponent implements OnInit {
   editSingleBookmark():void{
     this.bookmarkService.bookmarkEdited$.subscribe((editedBookmark) => {
       // Find the index of the edited bookmark in the array
-      const index = this.bookmarks.findIndex((bookmark) => bookmark.id === editedBookmark.id);
+      const index = this.bookmarks.findIndex((bookmark) => bookmark.showId === editedBookmark.showId);
   
       // Update the bookmark in the array with the edited one
       if (index !== -1) {
@@ -57,8 +59,8 @@ export class ShowsComponent implements OnInit {
 
   deleteBookmark(): void {
     this.bookmarkService.bookmarkDeleted$.subscribe((deletedBookmark) => { 
-      console.log(deletedBookmark.id); // Log the ID
-      const index = this.bookmarks.findIndex((bookmark) => bookmark.id === deletedBookmark.id);
+      console.log(deletedBookmark.showId); // Log the ID
+      const index = this.bookmarks.findIndex((bookmark) => bookmark.showId === deletedBookmark.showId);
       console.log(index); // Log the index
       if (index !== -1) {
         this.bookmarks.splice(index, 1);
@@ -74,6 +76,8 @@ export class ShowsComponent implements OnInit {
     },
     (error) => {
       console.log(error);
+      this.loading = false;
+      this.afterLoadText = "It appears something went wrong. Try again later."
     },
     ()=>{
       this.loading = false;
@@ -81,15 +85,15 @@ export class ShowsComponent implements OnInit {
   }
 
   getGridCols(): number {
-    if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+    if (this.breakpointObserver.isMatched(Breakpoints.XSmall)) {
       return 1; // 1 column for mobile view
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
-      return 3; // 3 columns for desktop view
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
-      return 4; // 2 columns for other screen sizes
+    } else if (this.breakpointObserver.isMatched([Breakpoints.Small])) {
+      return 2; // 3 columns for desktop view
+    } else if (this.breakpointObserver.isMatched([Breakpoints.Large,Breakpoints.Medium])) {
+      return 3; // 2 columns for other screen sizes
     }
     else if (this.breakpointObserver.isMatched(Breakpoints.XLarge)) {
-      return 5; // 2 columns for other screen sizes
+      return 4; // 2 columns for other screen sizes
     }
     else {
       return 0

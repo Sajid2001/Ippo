@@ -1,4 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
+
+.custom-snackbar {
+    background-color: #000000; 
+    color: white;
+  }
+
+  .custom-snackbar button{
+    font-weight: bold;
+    margin-left: 20px;
+    color: orangered;
+  }
+
+  input[type="password"] {
+    font-size: 8px; /* Adjust the font size as needed */
+  }

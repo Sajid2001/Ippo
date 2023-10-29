@@ -3,13 +3,14 @@
   <img mat-card-image src="{{ bookmark.imageUrl }}" alt="{{ bookmark.name }}"/>
   <div class="overlay">
     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-        <h3 class="overlay-text"><a class="mal-url" target="_blank" [attr.href] = "bookmark.malUrl">{{ bookmark.name }}</a></h3>
+        <h3 class="overlay-text"><a class="mal-url" target="_blank" [attr.href] = "bookmark.malUrl">{{ bookmark.name.slice(0,16).trim() }}<span *ngIf="bookmark.name.length > 16">...</span></a></h3>
         <div class="hidden-text">
           <button mat-button (click)="openEditDialog()"> Edit </button>
         </div>
     </div>
-    <p *ngIf="this.bookmark.showType === 'TV' && this.bookmark.episodesWatched > 0" class="overlay-text">Episode: {{bookmark.episodesWatched}}</p>
-    <p *ngIf="this.bookmark.timeStamp !== '00:00:00' && this.bookmark.timeStamp.match(timestampPattern) && (this.bookmark.showType === 'Movie' || this.bookmark.showType === 'Special' || this.bookmark.showType === 'Music')" class="overlay-text">Timestamp: {{bookmark.timeStamp}}</p>
+    <p *ngIf="(timestampVisible() && this.bookmark.timeStamp === '00:00:00') || (episodesVisible() && this.bookmark.episodesWatched === 0)">Not started</p>
+    <p *ngIf="this.bookmark.timeStamp !== '00:00:00' && this.bookmark.timeStamp.match(timestampPattern) && (timestampVisible())">Timestamp: {{bookmark.timeStamp}} </p>
+    <p *ngIf="episodesVisible() && this.bookmark.episodesWatched > 0">Episode: {{bookmark.episodesWatched}}</p>
     <div class="hidden-text">
       <p *ngIf="this.bookmark.lastSeenDescription !== '' "> <span style="font-weight: bold;">Last Seen: </span>{{bookmark.lastSeenDescription}} </p>
       <button mat-flat-button (click)="openLinksDialog()">Watch</button>

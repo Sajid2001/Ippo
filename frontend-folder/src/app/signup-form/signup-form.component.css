@@ -1,0 +1,91 @@
+form {
+    background-color: white;
+    padding: 35px;
+    border-radius: 4px;
+    overflow:hidden;
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form img{
+    max-height: 180px;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+@media (max-width:429px){
+    form{
+        min-width: 270px;
+        padding: 30px;
+    }
+    form img{
+        max-height: 80px;
+    }
+}
+
+@media screen and (max-width:768px) and (min-width:430px){
+    form{
+        min-width: 325px;
+        padding: 30px;
+    }
+    form img{
+        max-height: 100px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+    form{
+        min-width: 400px;
+        margin-top: 40px;
+    }
+    form img{
+        max-height: 120px;
+    }
+}
+
+.mat-form-field{
+    width: 100%;
+}
+
+.mat-form-field .matInput{
+    background-color: rgb(216, 216, 216);
+}
+
+h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    padding: 10px;
+}
+
+button{
+    width: 100%;
+    margin-top: 20px;
+}
+
+p{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.error-text{
+    color: red;
+    margin: auto;
+    font-weight: bold;
+    text-align: center;
+    max-width: 400px;
+  }
+
+.loading-bar{
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    padding: 0; 
+    overflow: hidden;
+    height: 6px;
+}

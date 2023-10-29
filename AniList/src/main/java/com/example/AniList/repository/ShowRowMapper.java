@@ -10,7 +10,8 @@ public class ShowRowMapper implements RowMapper<Show> {
     public Show mapRow(ResultSet resultSet, int rowNum) throws SQLException
     {
         return new Show(
-                resultSet.getInt("id"),
+                resultSet.getInt("show_id"),
+                resultSet.getInt("user_id"),
                 resultSet.getString("name"),
                 resultSet.getString("showType"),
                 resultSet.getInt("episodesWatched"),

@@ -16,6 +16,7 @@
     .example-card{
       margin: 20px;
     }
+    
   }
 
   h3{
@@ -29,8 +30,6 @@
     font-size: large;
     padding-bottom: 15px;
   }
-
- 
 
 .mat-card-image{
   border-radius: 30px;

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'; 
@@ -17,6 +17,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field'; 
 import {MatDialogModule} from '@angular/material/dialog'; 
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { ShowsComponent } from './shows/shows.component';
@@ -24,9 +27,14 @@ import { ShowCardComponent } from './show-card/show-card.component';
 import { HomeHeroComponent } from './home-hero/home-hero.component';
 import { NewBookmarkFormComponent } from './new-bookmark-form/new-bookmark-form.component';
 import { EditBookmarkFormComponent } from './edit-bookmark-form/edit-bookmark-form.component';
-import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { StreamLinksComponent } from './stream-links/stream-links.component';
-import { LoadingComponent } from './loading/loading.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { SignupPageComponent } from './signup-page/signup-page.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { FooterComponent } from './footer/footer.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { TokenInterceptor } from './token.interceptor';
 
 
 @NgModule({
@@ -38,9 +46,13 @@ import { LoadingComponent } from './loading/loading.component';
     HomeHeroComponent,
     NewBookmarkFormComponent,
     EditBookmarkFormComponent,
-    ConfirmDeleteComponent,
     StreamLinksComponent,
-    LoadingComponent,
+    LoginPageComponent,
+    LoginFormComponent,
+    SignupPageComponent,
+    SignupFormComponent,
+    FooterComponent,
+    ConfirmDialogComponent,
   ],
   entryComponents:[
     NewBookmarkFormComponent
@@ -60,9 +72,18 @@ import { LoadingComponent } from './loading/loading.component';
     MatInputModule,
     MatFormFieldModule,
     MatDialogModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

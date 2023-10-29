@@ -1,9 +1,11 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { BookmarkService } from '../services/bookmark.service';
 import { JikanService } from '../services/jikan.service';
 import { Bookmark } from '../shared/bookmark.model';
 import { JikanResult } from '../shared/jikanresult.model';
+import { SnackbarService } from '../services/snackbar.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 
 @Component({
@@ -17,12 +19,17 @@ export class NewBookmarkFormComponent implements OnInit {
     public dialogRef: MatDialogRef<NewBookmarkFormComponent>,
     private bookmarkService: BookmarkService,
     private jikanService: JikanService,
-  ) { }
+    private snackbarService:SnackbarService,
+    private breakpointObserver: BreakpointObserver,
+  ) { 
+    this.observeBreakpoints();
+  }
 
   errors: { [key: string]: string } = {};
-  searchName:string = ''
+  searchName:string = '';
   loading:boolean = false;
-  searchResults:JikanResult[] = []
+  searchResults:JikanResult[] = [];
+  visibleResults:JikanResult[] = [];
   
   newBookmark: Bookmark = {
     name:'',
@@ -35,12 +42,37 @@ export class NewBookmarkFormComponent implements OnInit {
     imageUrl:''
   };
 
+  observeBreakpoints():void{
+    this.breakpointObserver.observe([Breakpoints.XSmall]).subscribe(result => {
+      if(result.matches){
+        this.visibleResults = this.searchResults.slice(0,2)
+      }else{
+        this.visibleResults = this.searchResults;
+      }
+    })
+  }
+
+  episodesVisible():boolean{
+    if(this.newBookmark.showType === 'TV' || this.newBookmark.showType === 'OVA' || this.newBookmark.showType == 'ONA'){
+      return true;
+    }
+    return false;
+  }
+
+  timestampVisible():boolean{
+    if(this.newBookmark.showType === 'Movie' || this.newBookmark.showType === 'Special'){
+      return true;
+    }
+    return false;
+  }
+
   numericValue: string = '';
 
   onSearch():void{
     this.loading = true;
     this.jikanService.getJikanResultsByName(this.searchName).subscribe((results) => {
       this.searchResults = results;
+      this.observeBreakpoints();
     },(error) =>{
       console.log(error);
     }, () => {
@@ -75,6 +107,7 @@ export class NewBookmarkFormComponent implements OnInit {
       this.bookmarkService.emitBookmarkAdded(addedBookmark);
       this.errors = {}
       this.dialogRef.close();
+      this.snackbarService.open("You successfully created a new bookmark!")
     }, (error) => {
       console.log(error.error);
       this.errors = error.error;

@@ -23,7 +23,6 @@ public class StreamInfoService {
             Document searchResults = Jsoup.connect(searchUrl).get();
             //Step 2: Find the top search result URL
             Element topResult = searchResults.select("li.grouped-list-item.anime-item").first();
-            System.out.println(topResult);
             if(topResult != null)
             {
                 String topResultUrl = "https://www.livechart.me/anime/" + topResult.attr("data-anime-id") + "/streams";

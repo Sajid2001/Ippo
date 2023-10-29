@@ -19,6 +19,20 @@ export class ShowCardComponent implements OnInit {
 
   timestampPattern = /^([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 
+    episodesVisible():boolean{
+    if(this.bookmark.showType === 'TV' || this.bookmark.showType === 'ONA' || this.bookmark.showType === 'OVA'){
+      return true;
+    }
+    return false;
+  }
+
+  timestampVisible():boolean{
+    if(this.bookmark.showType === 'Movie' || this.bookmark.showType === 'Special'){
+      return true;
+    }
+    return false;
+  }
+
   openEditDialog(){
     const dialogRef = this.dialog.open(EditBookmarkFormComponent, {
       data: { bookmark: this.bookmark } // Pass the bookmark data to the dialog
@@ -29,7 +43,7 @@ export class ShowCardComponent implements OnInit {
     const dialogRef = this.dialog.open(StreamLinksComponent,{
       data:{
         name:this.bookmark.name,
-        id: this.bookmark.id,
+        id: this.bookmark.showId,
         customUrl: this.bookmark.customUrl
       }
     })

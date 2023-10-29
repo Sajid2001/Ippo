@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Bookmark } from '../shared/bookmark.model';
 import { BookmarkService } from '../services/bookmark.service';
-import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component';
+import { SnackbarService } from '../services/snackbar.service';
+import { ConfirmDialogService } from '../services/confirm-dialog.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class EditBookmarkFormComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<EditBookmarkFormComponent>,
     private bookmarkService: BookmarkService,
-    private dialog: MatDialog,
+    private snackbarService: SnackbarService,
+    private confirmDialogService: ConfirmDialogService,
     @Inject(MAT_DIALOG_DATA) public data: any 
   ) {
     this.bookmark = data.bookmark; 
@@ -33,27 +35,42 @@ export class EditBookmarkFormComponent implements OnInit {
   description:string;
   customUrl:string;
 
-  onClear():void{
-    this.episodeNumber = 0;
-    this.description = "";
-    this.customUrl = "";
-    this.timeStamp = "00:00:00";
+  episodesVisible():boolean{
+    if(this.bookmark.showType === 'TV' || this.bookmark.showType === 'ONA' || this.bookmark.showType === 'OVA'){
+      return true;
+    }
+    return false;
   }
 
-  // onClear():void{
-  //   this.bookmark.episodesWatched = 0;
-  //   this.bookmark.lastSeenDescription = "";
-  //   this.bookmark.customUrl = "";
-  //   this.bookmark.timeStamp = "00:00:00";
+  timestampVisible():boolean{
+    if(this.bookmark.showType === 'Movie' || this.bookmark.showType === 'Special'){
+      return true;
+    }
+    return false;
+  }
 
-  //   this.bookmarkService.editBookmark(this.bookmark).subscribe((editedBookmark) => {
-  //     this.bookmarkService.emitBookmarkEdited(editedBookmark);
-  //     this.dialogRef.close();
-  //   },(error) => {
-  //     console.log(error.error);
-  //     this.errors = error.error;
-  //   });
-  // }
+  Clear():void{
+    this.bookmark.episodesWatched = 0;
+    this.bookmark.lastSeenDescription = "";
+    this.bookmark.customUrl = "";
+    this.bookmark.timeStamp = "00:00:00";
+    this.bookmarkService.editBookmark(this.bookmark).subscribe((editedBookmark) => {
+      this.bookmarkService.emitBookmarkEdited(editedBookmark);
+      this.snackbarService.open("You have successfully cleared this bookmark")
+      this.dialogRef.close();
+    },(error) => {
+      console.log(error.error);
+      this.errors = error.error;
+    });
+  }
+
+  Delete():void{
+    this.bookmarkService.deleteBookmark(this.bookmark).subscribe((deletedBookmark) => {
+      this.bookmarkService.emitBookmarkDeleted(deletedBookmark);
+      this.dialogRef.close();
+      this.snackbarService.open("You have successfully deleted this bookmark")
+    })
+  }
 
 
   onSubmit(): void {
@@ -65,25 +82,21 @@ export class EditBookmarkFormComponent implements OnInit {
     this.bookmarkService.editBookmark(this.bookmark).subscribe((editedBookmark) => {
       this.bookmarkService.emitBookmarkEdited(editedBookmark);
       this.dialogRef.close();
+      this.snackbarService.open("You have successfully updated this bookmark")
     },(error) => {
       console.log(error.error);
       this.errors = error.error;
     });
   }
 
+  openClearConfirmationDialog():void{
+    this.confirmDialogService.openConfirmDialog('Clear Bookmark', 'Are you sure you want to clear this bookmark?', () => {this.Clear()})
+  }
+
   openDeleteConfirmationDialog(): void {
-    const dialogRef = this.dialog.open(ConfirmDeleteComponent);
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.bookmarkService.deleteBookmark(this.bookmark).subscribe((deletedBookmark) => {
-          this.bookmarkService.emitBookmarkDeleted(deletedBookmark);
-          this.dialogRef.close();
-        })
-      }
-    });
+    this.confirmDialogService.openConfirmDialog('Delete Bookmark', 'Are you sure you want to delete this bookmark?', () => {this.Delete()})
   }
   
-
   ngOnInit(): void {
   }
 

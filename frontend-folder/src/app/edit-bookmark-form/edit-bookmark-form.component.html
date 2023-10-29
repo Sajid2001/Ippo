@@ -1,9 +1,10 @@
 <h1>Edit Bookmark</h1>
-  <mat-form-field *ngIf="this.bookmark.showType === 'TV'">
+<h2>{{this.bookmark.name.slice(0,60).trim()}}<span *ngIf="this.bookmark.name.length > 60">...</span> </h2>
+  <mat-form-field *ngIf="episodesVisible()">
     <mat-label>Episode Number</mat-label>
     <input type="number" min="0" value="episodeNumber" matInput [(ngModel)]="episodeNumber">
   </mat-form-field>
-  <mat-form-field *ngIf="this.bookmark.showType === 'Movie'">
+  <mat-form-field *ngIf="timestampVisible()">
     <mat-label>Timestamp</mat-label>
     <input value="timeStamp" matInput [(ngModel)]="timeStamp">
   </mat-form-field>
@@ -16,7 +17,7 @@
     <textarea value="description" matInput [(ngModel)]="description"></textarea>
   </mat-form-field>
   <div class="button-panel">
-    <button mat-raised-button (click)="onClear()">Clear</button>
+    <button mat-raised-button (click)="openClearConfirmationDialog()">Clear</button>
     <button mat-raised-button (click)="onSubmit()" color="primary">Update</button>
     <button mat-raised-button color="warn" (click)="openDeleteConfirmationDialog()">Delete</button>
   </div>

@@ -1,3 +1,4 @@
+<div class="screen">
 <app-home-hero></app-home-hero>
 
 <form class="example-form">
@@ -7,8 +8,9 @@
     </mat-form-field>
   </form>
   
-  <app-loading *ngIf="loading"></app-loading>
-  <mat-grid-list [cols]="getGridCols()" *ngIf="!loading" rowHeight="450px" gutterSize="20px">
+  <mat-spinner class="spinner" diameter="80" *ngIf="loading"></mat-spinner>
+  <h2 *ngIf="this.bookmarks.length == 0 && !loading">{{this.afterLoadText}}</h2>
+  <mat-grid-list [cols]="getGridCols()" *ngIf="!loading && this.bookmarks.length > 0" rowHeight="450px" [gutterSize]="'6px'">
     <div *ngFor="let bookmark of filteredBookmarks">
         <mat-grid-tile>
             <app-show-card [bookmark] = "bookmark"></app-show-card>
@@ -16,4 +18,5 @@
       </div>
     
   </mat-grid-list>
+</div>
   

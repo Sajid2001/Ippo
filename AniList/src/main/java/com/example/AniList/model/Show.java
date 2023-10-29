@@ -1,15 +1,10 @@
 package com.example.AniList.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-import org.springframework.data.relational.core.sql.In;
-import org.springframework.format.annotation.DateTimeFormat;
-import java.sql.Time;
 
 public class Show {
-    private Integer id;
-    @NotNull(message = "Name cannot be blank")
+    private Integer showId;
+    private Integer userId;
     @NotBlank(message = "Name cannot be blank")
     private String name;
     private String showType;
@@ -24,9 +19,10 @@ public class Show {
     @Pattern(regexp = "([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]", message = "Incorrect timestamp format. Must be in hh:mm:ss")
     private String timeStamp;
 
-    public Show(Integer id, String name, String showType, Integer episodesWatched, String lastSeenDescription, String imageUrl, String customUrl, String malUrl, String timeStamp)
+    public Show(Integer showId, Integer userId, String name, String showType, Integer episodesWatched, String lastSeenDescription, String imageUrl, String customUrl, String malUrl, String timeStamp)
     {
-        this.id = id;
+        this.showId = showId;
+        this.userId = userId;
         this.name = name;
         this.showType = showType;
         this.episodesWatched = episodesWatched;
@@ -37,12 +33,20 @@ public class Show {
         this.timeStamp = timeStamp;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getShowId() {
+        return showId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setShowId(Integer showId) {
+        this.showId = showId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getName() {

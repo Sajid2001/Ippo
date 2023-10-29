@@ -1,15 +1,17 @@
+.screen{
+   min-height: 100vh
+}
 
-h1{
-   font-size: xx-large; 
+h2{
    text-align: center;
    margin: 100px;
-   font-weight: bold;
+   font: x-large;
 }
 
 .mat-grid-list{
    margin: auto;
-   max-width: 1500px;
-   margin-bottom: 200px;
+   max-width: 1100px;
+   margin-bottom: 100px;
 }
 
 .example-form {
@@ -27,6 +29,26 @@ h1{
 
 @media (max-width:600px) {
    .example-form {
-      max-width: 400px;
+      max-width: 350px;
     }
+    h2{
+      font-size: medium;
+      margin: 50px;
+    }
+}
+
+@media (max-width: 960px) {
+   .mat-grid-list{
+      max-width: 750px;
+   }
+}
+
+@media (min-width: 1919px) {
+   .mat-grid-list{
+      max-width: 1500px;
+   }
+}
+
+.spinner{
+   margin: auto;
 }

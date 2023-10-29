@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(using = StreamInfoSerializer.class)
 public class StreamInfo {
-    private Integer id;
+    private Integer streamInfoId;
     private Integer showId;
     private String stream;
     private String url;
@@ -18,12 +18,12 @@ public class StreamInfo {
         this.url = url;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getStreamInfoId() {
+        return streamInfoId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setStreamInfoId(Integer stream_info_id) {
+        this.streamInfoId = stream_info_id;
     }
 
     public Integer getShowId() {
