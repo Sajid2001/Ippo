@@ -1,0 +1,16 @@
+<div class="container">
+    <h2>FAQ</h2>
+
+    <mat-accordion class="accordian">
+        <mat-expansion-panel *ngFor="let panel of faqPanels" class="panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title class="title">
+              {{panel.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="description">{{panel.description}}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+      
+    <button mat-raised-button (click)="onClick()"> Sign Up </button>
+</div>

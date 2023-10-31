@@ -1,0 +1,115 @@
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    backdrop-filter: blur(5px);
+}
+
+
+.navbar-mobile-open{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.disabled{
+  pointer-events: none;
+  opacity: 50%;
+}
+
+.navbar-header {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: x-large;
+  font-family: 'Mochiy Pop One', sans-serif;
+}
+
+
+
+.navbar-item{
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-list{
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-link:hover{
+    opacity: 80%;
+}
+
+img{
+  height: 50px;
+  margin-right: 15px;
+}
+
+
+.mobile-list{
+  position:fixed;
+  top: 55px;
+  left: 0;
+  right: 0;
+  background-color: black;
+  margin: auto;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  z-index: 1000;
+  width: 80%;
+}
+
+.mobile-list-section{
+  display: flex;
+  padding: 12px;
+  flex-direction: column;
+  text-align: center;
+  font-size: large;
+  font-weight: lighter;
+}
+
+.mobile-list-section a{
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+}
+
+.mobile-list-section p{
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.mobile-list-section a:hover{
+  opacity: 80%;
+}
+
+@media(max-width:843px){
+  .navbar{
+    width: 92%;
+  }
+  .mobile-list{
+    width: 92%;
+  }
+}

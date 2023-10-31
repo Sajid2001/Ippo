@@ -1,0 +1,32 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    color: white;
+    background-color: black;
+}
+
+.container img{
+    height: 300px;
+}
+
+.container h1{
+    font-size: 50px;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.container .description{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 1100px;
+}
+
+.container .description h2{
+    font-size: 30px;
+    font-weight: lighter;
+}
