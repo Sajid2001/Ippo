@@ -2,6 +2,7 @@ package com.example.AniList.controller;
 
 import com.example.AniList.model.Show;
 import com.example.AniList.model.ShowDTO;
+import com.example.AniList.model.ShowDemoDTO;
 import com.example.AniList.model.StreamInfo;
 import com.example.AniList.repository.ShowRepository;
 import com.example.AniList.repository.StreamInfoRepository;
@@ -32,6 +33,20 @@ public class ShowController {
         this.showRepository = showRepository;
         this.streamInfoRepository = streamInfoRepository;
         this.userRepository = userRepository;
+    }
+
+    @GetMapping("/demo")
+    public ResponseEntity<?> getShowNameAndImage(@RequestParam String query)
+    {
+        if(query != null)
+        {
+            List<ShowDemoDTO> searchResults = showService.searchAnimeNameAndImage(query);
+            return ResponseEntity.ok(searchResults);
+        }
+        else
+        {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/bookmarks")
@@ -155,5 +170,4 @@ public class ShowController {
             return ResponseEntity.notFound().build();
         }
     }
-
 }
