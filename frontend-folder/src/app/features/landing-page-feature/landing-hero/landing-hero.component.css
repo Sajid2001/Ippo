@@ -64,3 +64,69 @@ button{
     font-size: 30px;
     color: white;
 }
+
+@media(max-width:843px){
+    .poster a{
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 16px;
+    }
+
+    button{
+        padding: 5px;
+        min-width: 200px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width:600px) and (max-width:843px){
+    .poster{
+        height: 80vh;
+    }
+
+    .poster .content {
+        min-width: 500px;
+        gap: 50px;
+        text-align: center;
+    }
+
+    h1{
+        margin-top: 50px;
+        font-size: 40px;
+        line-height: 50px;
+    }
+    
+    p{
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+
+}
+
+@media screen and (max-width:600px){ 
+
+    .poster{
+        height: 80vh;
+    }
+
+    .poster .content {
+        min-width: 400px;
+        gap: 40px;
+        text-align: center;
+    }
+
+    h1{
+        margin-top: 30px;
+        font-size: 30px;
+        line-height: 40px;
+    }
+    
+    p{
+        font-size: 30px;
+        line-height: 30px;
+    }
+}

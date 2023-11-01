@@ -1,5 +1,5 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-search-demo',
@@ -8,7 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class SearchDemoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private breakpointObserver:BreakpointObserver
+  ) {
+    this.observeBreakpoints();
+   }
 
   searchResults:{name:string, imageUrl:string}[] = [
     {
@@ -24,6 +28,18 @@ export class SearchDemoComponent implements OnInit {
       imageUrl:"https://cdn.myanimelist.net/images/anime/1015/138006l.jpg"
     },
   ]
+
+  visibleResults:{name:string, imageUrl:string}[] = this.searchResults;
+
+  observeBreakpoints():void{
+    this.breakpointObserver.observe([Breakpoints.TabletPortrait, Breakpoints.HandsetPortrait]).subscribe(result => {
+      if(result.matches){
+        this.visibleResults = this.searchResults.slice(0,2)
+      }else{
+        this.visibleResults = this.searchResults;
+      }
+    })
+  }
 
   ngOnInit(): void {
   }

@@ -9,7 +9,7 @@
           </button>
     </mat-form-field>
     <div class="search-results">
-        <div class="result" *ngFor="let result of searchResults">
+        <div class="result" *ngFor="let result of visibleResults">
             <img [src]="result.imageUrl"/>
             <h3>{{result.name.slice(0,17).trim()}}<span *ngIf="result.name.length > 17">...</span></h3>
         </div>
