@@ -4,14 +4,19 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search Bookmarks</mat-label>
-      <input matInput [(ngModel)]="searchText" name="searchText" (input)="filterBookmarks()">
+      <input matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let bookmark of filteredBookmarks | async" [value]="bookmark.name">
+          {{bookmark.name}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </form>
   
   <mat-spinner class="spinner" diameter="80" *ngIf="loading"></mat-spinner>
   <h2 *ngIf="this.bookmarks.length == 0 && !loading">{{this.afterLoadText}}</h2>
   <mat-grid-list [cols]="getGridCols()" *ngIf="!loading && this.bookmarks.length > 0" rowHeight="450px" [gutterSize]="'6px'">
-    <div *ngFor="let bookmark of filteredBookmarks">
+    <div *ngFor="let bookmark of filteredBookmarks | async">
         <mat-grid-tile>
             <app-show-card [bookmark] = "bookmark"></app-show-card>
         </mat-grid-tile>

@@ -21,6 +21,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ShowsComponent } from './features/show-feature/shows/shows.component';
@@ -76,6 +78,7 @@ import { LandingFaqComponent } from './features/landing-page-feature/landing-faq
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -89,7 +92,8 @@ import { LandingFaqComponent } from './features/landing-page-feature/landing-faq
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatAutocompleteModule
   ],
   providers: [
     {

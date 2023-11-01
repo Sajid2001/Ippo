@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path:'',
     component:LandingPageComponent,
-    canActivate:[LoggedInGuard]
+    canActivate:[LoggedInGuard],
   },
   {
     path:'shows',

@@ -3,6 +3,8 @@ import { Bookmark } from '../../../shared/models/bookmark.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
 import { BookmarkService } from '../../../core/services/bookmark.service';
+import { FormControl } from '@angular/forms';
+import { Observable, map, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-shows',
@@ -20,14 +22,21 @@ export class ShowsComponent implements OnInit {
   bookmarks:Bookmark[] = [];
   loading:boolean = false;
   searchText: string = ''; 
-  afterLoadText:string = "It appears like you do not have any bookmarks. Click the button above to create some."
-  filteredBookmarks: Bookmark[] = this.bookmarks; 
+  afterLoadText:string = "It appears like you do not have any bookmarks. Click the button above to create some.";
+  filteredBookmarks: Observable<Bookmark[]> | undefined;
+
+  myControl = new FormControl('')
 
   ngOnInit() {
 
     this.retrieveBookmarks();
 
-    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Web]).subscribe(() => {
+    this.filteredBookmarks = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '')),
+    );
+
+    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge]).subscribe(() => {
       this.cdr.detectChanges(); 
     });
 
@@ -72,7 +81,6 @@ export class ShowsComponent implements OnInit {
     this.loading = true;
     this.bookmarkService.getBookmarks().subscribe((bookmarks) => {
       this.bookmarks = bookmarks;
-      this.filteredBookmarks = this.bookmarks; 
     },
     (error) => {
       console.log(error);
@@ -100,11 +108,16 @@ export class ShowsComponent implements OnInit {
     }
   }
 
-  // Function to filter bookmarks based on searchText
-  filterBookmarks() {
-    this.filteredBookmarks = this.bookmarks.filter((bookmark) =>
-      bookmark.name.toLowerCase().includes(this.searchText.toLowerCase())
-    );
+  private _filter(value: string): Bookmark[] {
+    const filterValue = value.toLowerCase();
+    return this.bookmarks.filter(bookmark => bookmark.name.toLowerCase().includes(filterValue));
   }
+
+  // Function to filter bookmarks based on searchText
+  // filterBookmarks() {
+  //   this.filteredBookmarks = this.bookmarks.filter((bookmark) =>
+  //     bookmark.name.toLowerCase().includes(this.searchText.toLowerCase())
+  //   );
+  // }
 
 }

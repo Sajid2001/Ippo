@@ -10,7 +10,7 @@
 }
 
 .container img{
-    height: 300px;
+    height: 250px;
 }
 
 .container h1{
@@ -65,7 +65,6 @@
 
 @media (max-width:599px){
     .container{
-        min-height: 80vh;
         padding-top: 80px;
         padding-bottom: 80px;
     }

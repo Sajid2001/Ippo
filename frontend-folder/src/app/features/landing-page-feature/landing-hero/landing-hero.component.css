@@ -109,10 +109,6 @@ button{
 
 @media screen and (max-width:600px){ 
 
-    .poster{
-        height: 80vh;
-    }
-
     .poster .content {
         min-width: 400px;
         gap: 40px;
