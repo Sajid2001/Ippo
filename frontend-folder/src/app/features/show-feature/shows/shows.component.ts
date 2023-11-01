@@ -112,12 +112,4 @@ export class ShowsComponent implements OnInit {
     const filterValue = value.toLowerCase();
     return this.bookmarks.filter(bookmark => bookmark.name.toLowerCase().includes(filterValue));
   }
-
-  // Function to filter bookmarks based on searchText
-  // filterBookmarks() {
-  //   this.filteredBookmarks = this.bookmarks.filter((bookmark) =>
-  //     bookmark.name.toLowerCase().includes(this.searchText.toLowerCase())
-  //   );
-  // }
-
 }
