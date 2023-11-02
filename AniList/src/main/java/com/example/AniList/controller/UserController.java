@@ -79,9 +79,12 @@ public class UserController {
         }
     }
 
-    @PostMapping("/refresh")
-    public ResponseEntity<Map<String, String>> refreshToken(@RequestParam String refreshToken) {
-        if (tokenService.refreshTokenIsValid(refreshToken)) {
+    @GetMapping("/refresh")
+    public ResponseEntity<Map<String, String>> refreshAccessToken(@RequestHeader("Authorization") String refreshTokenBearer)
+    {
+        String refreshToken = tokenService.extractRefreshToken(refreshTokenBearer);
+        if(tokenService.refreshTokenIsValid(refreshToken))
+        {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String newAccessToken = tokenService.generateAccessTokenFromRefreshToken(refreshToken);
             Map<String, String> response = new HashMap<>();

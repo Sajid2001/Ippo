@@ -68,6 +68,15 @@ public class TokenService {
         return false;
     }
 
+    public String extractRefreshToken(String refreshTokenBearer)
+    {
+        if(refreshTokenBearer != null && refreshTokenBearer.startsWith("Bearer "))
+        {
+            return refreshTokenBearer.substring(7); //Removes "Bearer "
+        }
+        return null;
+    }
+
     private Map<String, Object> decodeRefreshToken(String refreshToken)
     {
         return this.decoder.decode(refreshToken).getClaims();
