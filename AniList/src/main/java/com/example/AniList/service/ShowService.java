@@ -1,12 +1,12 @@
 package com.example.AniList.service;
 
 import com.example.AniList.model.ShowDTO;
+import com.example.AniList.model.ShowDemoDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +36,29 @@ public class ShowService {
                 showDTO.setImageUrl(itemNode.get("images").get("jpg").get("large_image_url").asText());
                 showDTO.setMalUrl(itemNode.get("url").asText());
                 extractedDataList.add(showDTO);
+            }
+            return extractedDataList;
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<ShowDemoDTO> searchAnimeNameAndImage(String query) {
+        String apiUrl = "https://api.jikan.moe/v4/anime?limit=3&q=" + query;
+        String jsonResponse = restTemplate.getForObject(apiUrl, String.class);
+        try
+        {
+            JsonNode jsonNode = objectMapper.readTree(jsonResponse);
+            List<ShowDemoDTO> extractedDataList = new ArrayList<>();
+            for (JsonNode itemNode : jsonNode.get("data"))
+            {
+                ShowDemoDTO showDemoDTO = new ShowDemoDTO();
+                showDemoDTO.setName(itemNode.get("title").asText());
+                showDemoDTO.setImageUrl(itemNode.get("images").get("jpg").get("large_image_url").asText());
+                extractedDataList.add(showDemoDTO);
             }
             return extractedDataList;
         }

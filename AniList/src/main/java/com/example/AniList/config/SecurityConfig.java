@@ -56,7 +56,7 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
             .csrf(csrf -> csrf.disable())
             .authorizeRequests(auth -> auth
-                    .requestMatchers("/", "/auth/register", "/auth/login").permitAll()
+                    .requestMatchers("/", "api/demo", "/auth/register", "/auth/login", "/auth/refresh").permitAll()
                     .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -87,7 +87,7 @@ public class SecurityConfig {
             @Override
             public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
                 ResponseEntity<User> userResponse = userRepository.getUserByEmail(email);
-                if (userResponse == null || userResponse.getBody() == null)
+                if(userResponse == null || userResponse.getBody() == null)
                 {
                     throw new UsernameNotFoundException("User not found with email: " + email);
                 }

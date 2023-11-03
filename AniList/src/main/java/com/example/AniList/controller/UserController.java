@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -41,10 +42,12 @@ public class UserController {
         try
         {
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginDTO.email(), userLoginDTO.password()));
-            String token = tokenService.generateToken(authentication);
+            String accessToken = tokenService.generateAccessToken(authentication);
+            String refreshToken = tokenService.generateRefreshToken(authentication);
             Map<String, String> response = new HashMap<>();
             response.put("email", userLoginDTO.email());
-            response.put("token", token);
+            response.put("accessToken", accessToken);
+            response.put("refreshToken", refreshToken);
             return ResponseEntity.ok(response);
         }
         catch (AuthenticationException e)
@@ -66,12 +69,31 @@ public class UserController {
         {
             Integer userId = userService.registerUser(user);
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
-            String token = tokenService.generateToken(authentication);
+            String accessToken = tokenService.generateAccessToken(authentication);
+            String refreshToken = tokenService.generateRefreshToken(authentication);
             Map<String, Object> response = new HashMap<>();
             response.put("email", user.getEmail());
-            response.put("token", token);
+            response.put("accessToken", accessToken);
+            response.put("refreshToken", refreshToken);
             return ResponseEntity.ok(response);
         }
     }
 
+    @GetMapping("/refresh")
+    public ResponseEntity<Map<String, String>> refreshAccessToken(@RequestHeader("Authorization") String refreshTokenBearer)
+    {
+        String refreshToken = tokenService.extractRefreshToken(refreshTokenBearer);
+        if(tokenService.refreshTokenIsValid(refreshToken))
+        {
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String newAccessToken = tokenService.generateAccessTokenFromRefreshToken(refreshToken);
+            Map<String, String> response = new HashMap<>();
+            response.put("accessToken", newAccessToken);
+            return ResponseEntity.ok(response);
+        }
+        else
+        {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "Invalid refresh token."));
+        }
+    }
 }

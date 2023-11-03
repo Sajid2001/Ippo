@@ -1,0 +1,234 @@
+.container{
+    min-height: 80vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container .header{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin: auto;
+    width: 70%;
+    text-align: center;
+    gap: 20px;
+    max-width: 800px;
+}
+
+.header h2{
+    font-size: 50px;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.header p{
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 50px;
+}
+
+.container .card-container{
+    width: 30%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-container .card{
+    margin: auto;
+    background-color: white;
+    padding: 35px;
+    border-radius: 8px;
+    color: black;
+}
+
+.card h3{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.card .link-list{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.card a{
+    font-size: 30px;
+    font-weight: 400;
+    text-align: left;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+
+.card a:hover{
+    opacity: 80%;
+}
+
+.card .logo-image{
+    margin-right: 10px;
+    height: 40px;
+}
+
+.card-container p{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@media (max-width:843px) {
+    .container{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        min-height: 60vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        padding-left: 0px;
+        padding-right: 0px;
+        gap: 50px;
+    }
+
+    .container .header{
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+    }
+    
+    .container .card-container{
+        width: 100%;
+    }
+     
+    .card .link-list{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+}
+
+
+@media screen and (min-width: 600px) and (max-width:843px) {
+    .container{
+        min-height: 60vh;
+    }
+
+    .container .header{
+        gap: 20px;
+        max-width: 600px;
+    }
+    
+    .header h2{
+        font-size: 40px;
+    }
+    
+    .header p{
+        font-size: 30px;
+        line-height: 30px;
+    }
+    
+    .card-container .card{
+        margin: auto;
+        background-color: white;
+        padding: 35px;
+        border-radius: 8px;
+        color: black;
+    }
+    
+    .card h3{
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .card a{
+        font-size: 24px;
+        font-weight: 400;
+        text-align: left;
+        text-decoration: none;
+        color: black;
+        display: flex;
+        align-items: center;
+    }
+    
+    .card .logo-image{
+        margin-right: 10px;
+        height: 40px;
+    }
+    
+    .card-container p{
+        margin-top: 15px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width:599px){
+
+    .container .header{
+        gap: 20px;
+        max-width: 600px;
+    }
+    
+    .header h2{
+        font-size: 30px;
+    }
+    
+    .header p{
+        font-size: 20px;
+        line-height: 30px;
+    }
+    
+    .card-container .card{
+        margin: auto;
+        background-color: white;
+        padding: 35px;
+        border-radius: 8px;
+        color: black;
+    }
+    
+    .card h3{
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .card a{
+        font-size: 20px;
+        font-weight: 400;
+        text-align: left;
+        text-decoration: none;
+        color: black;
+        display: flex;
+        align-items: center;
+    }
+    
+    .card .logo-image{
+        margin-right: 10px;
+        height: 40px;
+    }
+    
+    .card-container p{
+        margin-top: 15px;
+        font-size: 16px;
+    }
+}
+
+
+
+

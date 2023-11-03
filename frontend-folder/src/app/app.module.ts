@@ -20,21 +20,30 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
+import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { NavbarComponent } from './navbar/navbar.component';
-import { ShowsComponent } from './shows/shows.component';
-import { ShowCardComponent } from './show-card/show-card.component';
-import { HomeHeroComponent } from './home-hero/home-hero.component';
-import { NewBookmarkFormComponent } from './new-bookmark-form/new-bookmark-form.component';
-import { EditBookmarkFormComponent } from './edit-bookmark-form/edit-bookmark-form.component';
-import { StreamLinksComponent } from './stream-links/stream-links.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { SignupPageComponent } from './signup-page/signup-page.component';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { FooterComponent } from './footer/footer.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { ShowsComponent } from './features/show-feature/shows/shows.component';
+import { ShowCardComponent } from './features/show-feature/show-card/show-card.component';
+import { HomeHeroComponent } from './features/show-feature/home-hero/home-hero.component';
+import { NewBookmarkFormComponent } from './features/show-feature/new-bookmark-form/new-bookmark-form.component';
+import { EditBookmarkFormComponent } from './features/show-feature/edit-bookmark-form/edit-bookmark-form.component';
+import { StreamLinksComponent } from './features/show-feature/stream-links/stream-links.component';
+import { LoginPageComponent } from './features/user-auth-feature/login-page/login-page.component';
+import { LoginFormComponent } from './features/user-auth-feature/login-form/login-form.component';
+import { SignupPageComponent } from './features/user-auth-feature/signup-page/signup-page.component';
+import { SignupFormComponent } from './features/user-auth-feature/signup-form/signup-form.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { ConfirmDialogComponent } from './features/show-feature/confirm-dialog/confirm-dialog.component';
 import { TokenInterceptor } from './token.interceptor';
+import { LandingPageComponent } from './features/landing-page-feature/landing-page/landing-page.component';
+import { LandingHeroComponent } from './features/landing-page-feature/landing-hero/landing-hero.component';
+import { WhyUsComponent } from './features/landing-page-feature/why-us/why-us.component';
+import { SearchDemoComponent } from './features/landing-page-feature/search-demo/search-demo.component';
+import { LinksDemoComponent } from './features/landing-page-feature/links-demo/links-demo.component';
+import { LandingFaqComponent } from './features/landing-page-feature/landing-faq/landing-faq.component';
 
 
 @NgModule({
@@ -53,6 +62,12 @@ import { TokenInterceptor } from './token.interceptor';
     SignupFormComponent,
     FooterComponent,
     ConfirmDialogComponent,
+    LandingPageComponent,
+    LandingHeroComponent,
+    WhyUsComponent,
+    SearchDemoComponent,
+    LinksDemoComponent,
+    LandingFaqComponent,
   ],
   entryComponents:[
     NewBookmarkFormComponent
@@ -63,6 +78,7 @@ import { TokenInterceptor } from './token.interceptor';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -75,7 +91,9 @@ import { TokenInterceptor } from './token.interceptor';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatAutocompleteModule
   ],
   providers: [
     {
