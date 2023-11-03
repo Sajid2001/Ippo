@@ -37,7 +37,6 @@ public class TokenService {
                 .subject(authentication.getName())
                 .claim("scope", scope)
                 .build();
-        System.out.println(scope);
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
 
@@ -50,7 +49,7 @@ public class TokenService {
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("self")
                 .issuedAt(now)
-                .expiresAt(now.plus(1, ChronoUnit.DAYS))
+                .expiresAt(now.plus(2, ChronoUnit.WEEKS))
                 .subject(authentication.getName())
                 .claim("scope", scope)
                 .claim("token_type", "refresh_token")

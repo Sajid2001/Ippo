@@ -36,7 +36,8 @@ export class SignupFormComponent implements OnInit {
     
     this.userService.Register(newUser).subscribe(
       result => {
-        localStorage.setItem('token', result.token)
+        localStorage.setItem('accessToken', result.accessToken)
+        localStorage.setItem('refreshToken', result.refreshToken)
         localStorage.setItem('email', result.email)
         this.router.navigate(['/shows'])
         this.snackbarService.open("You have successfully signed up")

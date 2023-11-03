@@ -1,4 +1,5 @@
 export interface Token {
     email:string,
-    token:string
+    accessToken:string,
+    refreshToken:string
 }

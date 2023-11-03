@@ -59,7 +59,10 @@ export class NavbarComponent implements OnInit {
   LogOut():void{
     this.userService.logoutUser();
     this.HandleMenu();
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login'])
+    .then(() => {
+      window.scrollTo(0,0);
+    }); 
   }
 
   HandleMenu():void{

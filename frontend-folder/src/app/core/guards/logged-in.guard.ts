@@ -11,7 +11,7 @@ export class LoggedInGuard implements CanActivate {
   ){}
 
   canActivate(): boolean{
-    if(!localStorage.getItem('token')){
+    if(!localStorage.getItem('accessToken')){
       return true;
     }
     this.router.navigate(['/shows'])
