@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Bookmark } from '../../../shared/models/bookmark.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
 import { BookmarkService } from '../../../core/services/bookmark.service';
 import { FormControl } from '@angular/forms';
-import { Observable, map, startWith } from 'rxjs';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-shows',
@@ -23,7 +23,12 @@ export class ShowsComponent implements OnInit {
   loading:boolean = false;
   searchText: string = ''; 
   afterLoadText:string = "It appears like you do not have any bookmarks. Click the button above to create some.";
-  filteredBookmarks: Observable<Bookmark[]> | undefined;
+  filteredBookmarks: Bookmark[] = [];
+  selectedView = localStorage.getItem('selectedView') || 'grid';
+  @ViewChild(MatTable) table!: MatTable<Bookmark>;
+  displayedColumns: string[] = ['image', 'name', 'showType', 'episodes', 'timestamp' , 'lastSeenDescription','watch', 'edit'];
+
+
 
   myControl = new FormControl('')
 
@@ -31,10 +36,9 @@ export class ShowsComponent implements OnInit {
 
     this.retrieveBookmarks();
 
-    this.filteredBookmarks = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+    this.myControl.valueChanges.subscribe((value: string) => {
+      this.filteredBookmarks = this.filterItems(value);
+    });
 
     this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge]).subscribe(() => {
       this.cdr.detectChanges(); 
@@ -51,6 +55,8 @@ export class ShowsComponent implements OnInit {
   pushNewBookmark():void{
     this.bookmarkService.bookmarkAdded$.subscribe((addedBookmark) => {
       this.bookmarks.push(addedBookmark)
+      this.table.renderRows()
+      this.filteredBookmarks = this.filterItems(this.myControl.value);
     });
   }
 
@@ -63,6 +69,7 @@ export class ShowsComponent implements OnInit {
       if (index !== -1) {
         this.bookmarks[index] = editedBookmark;
       }
+      this.table.renderRows()
     });
   }
 
@@ -73,7 +80,9 @@ export class ShowsComponent implements OnInit {
       console.log(index); // Log the index
       if (index !== -1) {
         this.bookmarks.splice(index, 1);
+        this.filteredBookmarks = this.filterItems(this.myControl.value);
       }
+      this.table.renderRows()
     });
   }
   
@@ -81,6 +90,7 @@ export class ShowsComponent implements OnInit {
     this.loading = true;
     this.bookmarkService.getBookmarks().subscribe((bookmarks) => {
       this.bookmarks = bookmarks;
+      this.filteredBookmarks = bookmarks;
     },
     (error) => {
       console.log(error);
@@ -108,8 +118,34 @@ export class ShowsComponent implements OnInit {
     }
   }
 
-  private _filter(value: string): Bookmark[] {
+  filterItems(value: string): Bookmark[] {
     const filterValue = value.toLowerCase();
     return this.bookmarks.filter(bookmark => bookmark.name.toLowerCase().includes(filterValue));
+  }
+
+  episodesVisible(bookmark: Bookmark):boolean{
+    if(bookmark.showType === 'TV' || bookmark.showType === 'ONA' || bookmark.showType === 'OVA'){
+      return true;
+    }
+    return false;
+  }
+
+  timestampVisible(bookmark: Bookmark):boolean{
+    if(bookmark.showType === 'Movie' || bookmark.showType === 'Special'){
+      return true;
+    }
+    return false;
+  }
+
+  openEditDialogList(bookmark: Bookmark){
+    this.bookmarkService.openEditDialog(bookmark)
+  }
+
+  openLinksDialogList(bookmark: Bookmark){
+    this.bookmarkService.openLinksDialog(bookmark)
+  }
+
+  storeView() {
+    localStorage.setItem('selectedView', this.selectedView);
   }
 }

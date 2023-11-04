@@ -3,6 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Bookmark } from '../../shared/models/bookmark.model';
 import { environment } from 'src/environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { EditBookmarkFormComponent } from 'src/app/features/show-feature/edit-bookmark-form/edit-bookmark-form.component';
+import { StreamLinksComponent } from 'src/app/features/show-feature/stream-links/stream-links.component';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,6 +18,7 @@ const httpOptions = {
 })
 
 export class BookmarkService {
+
 
   private apiUrl:string = environment.apiUrl;
   
@@ -30,6 +34,7 @@ export class BookmarkService {
 
   constructor(
     private http: HttpClient,
+    private dialog: MatDialog,
   ) {}
 
   getBookmarks(): Observable<Bookmark[]> {
@@ -63,5 +68,22 @@ export class BookmarkService {
   emitBookmarkDeleted(deletedBookmark: Bookmark) {
     this.bookmarkDeletedSubject.next(deletedBookmark)
   }
+
+  openEditDialog(bookmark: Bookmark):void{
+    const dialogRef = this.dialog.open(EditBookmarkFormComponent, {
+      data: { bookmark: bookmark }
+    });
+  }
+
+  openLinksDialog(bookmark: Bookmark){
+    const dialogRef = this.dialog.open(StreamLinksComponent,{
+      data:{
+        name:bookmark.name,
+        id: bookmark.showId,
+        customUrl: bookmark.customUrl
+      }
+    })
+  }
+
 
 }

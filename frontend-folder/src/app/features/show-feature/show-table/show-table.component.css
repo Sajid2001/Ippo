@@ -1,0 +1,40 @@
+table{
+    min-width: 60%;
+    margin: auto;
+    margin-bottom: 100px;
+    border-collapse: collapse;
+ }
+
+
+ table th {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: center;
+
+  }
+
+  /* Style for the table rows */
+  table td {
+    text-align: center;
+    border-bottom: 1px solid gray;
+    padding-top: 5px;
+  }
+
+img{
+    height: 120px; 
+    width: 90px;
+    object-fit: cover;
+}
+
+.mat-header-cell{
+    background-color: black;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.mat-cell{
+    justify-content: center;
+    text-align: center;
+}

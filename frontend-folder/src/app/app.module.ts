@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -22,7 +22,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatAutocompleteModule} from '@angular/material/autocomplete'; 
-import { ReactiveFormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';  
+import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
+
 
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ShowsComponent } from './features/show-feature/shows/shows.component';
@@ -44,6 +47,8 @@ import { WhyUsComponent } from './features/landing-page-feature/why-us/why-us.co
 import { SearchDemoComponent } from './features/landing-page-feature/search-demo/search-demo.component';
 import { LinksDemoComponent } from './features/landing-page-feature/links-demo/links-demo.component';
 import { LandingFaqComponent } from './features/landing-page-feature/landing-faq/landing-faq.component';
+import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
+import { ShowTableComponent } from './features/show-feature/show-table/show-table.component';
 
 
 @NgModule({
@@ -68,6 +73,8 @@ import { LandingFaqComponent } from './features/landing-page-feature/landing-faq
     SearchDemoComponent,
     LinksDemoComponent,
     LandingFaqComponent,
+    NotFoundPageComponent,
+    ShowTableComponent,
   ],
   entryComponents:[
     NewBookmarkFormComponent
@@ -93,7 +100,10 @@ import { LandingFaqComponent } from './features/landing-page-feature/landing-faq
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatTableModule,
+    MatSortModule,
+    MatButtonToggleModule
   ],
   providers: [
     {

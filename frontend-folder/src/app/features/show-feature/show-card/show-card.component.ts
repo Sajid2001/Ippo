@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Bookmark } from '../../../shared/models/bookmark.model';
 import {MatDialog} from '@angular/material/dialog';
 import { EditBookmarkFormComponent } from '../edit-bookmark-form/edit-bookmark-form.component';
-import { StreamLinksComponent } from '../stream-links/stream-links.component';
+import { BookmarkService } from 'src/app/core/services/bookmark.service';
 
 
 
@@ -15,7 +15,10 @@ export class ShowCardComponent implements OnInit {
 
   @Input() bookmark!: Bookmark;
 
-  constructor(private dialog:MatDialog) { }
+  constructor(
+    private bookmarkService: BookmarkService,
+    private dialog:MatDialog
+    ) { }
 
   timestampPattern = /^([0-1][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
 
@@ -34,19 +37,11 @@ export class ShowCardComponent implements OnInit {
   }
 
   openEditDialog(){
-    const dialogRef = this.dialog.open(EditBookmarkFormComponent, {
-      data: { bookmark: this.bookmark } // Pass the bookmark data to the dialog
-    });
+    this.bookmarkService.openEditDialog(this.bookmark);
   }
   
   openLinksDialog(){
-    const dialogRef = this.dialog.open(StreamLinksComponent,{
-      data:{
-        name:this.bookmark.name,
-        id: this.bookmark.showId,
-        customUrl: this.bookmark.customUrl
-      }
-    })
+    this.bookmarkService.openLinksDialog(this.bookmark);
   }
 
   ngOnInit(): void {
