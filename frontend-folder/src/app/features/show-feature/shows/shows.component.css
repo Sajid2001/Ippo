@@ -1,5 +1,5 @@
 .screen{
-   min-height: 100vh
+   min-height: 150vh
 }
 
 h2{
@@ -20,12 +20,70 @@ h2{
    font-size: larger;
    width: 100%;
    margin: auto;
-   margin-bottom: 80px;
+   margin-bottom: 30px;
  }
  
  .example-full-width {
    width: 100%;
 }
+
+.spinner{
+   margin: auto;
+}
+
+.toggle {
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.mat-header-cell{
+   background-color: black;
+   font-size: 16px;
+   justify-content: center;
+   color: white;
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+.mat-cell{
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   display: flex;
+   margin-bottom: 10px;
+   margin-top: 10px;
+}
+
+table{
+   width: 1000px;
+   margin: 10px auto;
+   margin-bottom: 100px;
+   border-collapse: collapse;  
+}
+
+
+.table-card{
+   max-width: 1000px;
+   margin:auto;
+   margin-bottom: 100px;
+}
+
+.mat-cell button{
+   margin-left: 10px;
+}
+
+.table-container{
+   overflow-x: auto;
+}
+
+table img{
+   height: 120px; 
+   width: 90px;
+   object-fit: cover;
+}
+
 
 @media (max-width:600px) {
    .example-form {
@@ -35,11 +93,18 @@ h2{
       font-size: medium;
       margin: 50px;
     }
+   
 }
 
 @media (max-width: 960px) {
    .mat-grid-list{
       max-width: 750px;
+   }
+   table{
+      width: 800px;
+   }
+   .mat-header-cell, .mat-cell{
+      font-size: 13px;
    }
 }
 
@@ -49,6 +114,3 @@ h2{
    }
 }
 
-.spinner{
-   margin: auto;
-}

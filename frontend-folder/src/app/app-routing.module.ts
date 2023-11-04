@@ -6,6 +6,7 @@ import { LoginPageComponent } from './features/user-auth-feature/login-page/logi
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInGuard } from './core/guards/logged-in.guard';
 import { LandingPageComponent } from './features/landing-page-feature/landing-page/landing-page.component';
+import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,15 @@ const routes: Routes = [
     path:'login',
     component: LoginPageComponent,
     canActivate:[LoggedInGuard]
-  }
+  },
+  { 
+    path: 'not-found', 
+    component: NotFoundPageComponent
+  },
+  { 
+    path: '**', 
+    redirectTo: 'not-found'
+  } 
 ];
 
 @NgModule({

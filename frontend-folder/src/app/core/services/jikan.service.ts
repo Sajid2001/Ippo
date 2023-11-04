@@ -17,4 +17,9 @@ export class JikanService {
     const url = `${this.apiUrl}/bookmarks?query=${name}`;
     return this.http.get<JikanResult[]>(url);
   }
+
+  getJikanDemoResultsByName(name:string): Observable<{title:string, image_url:string}[]> {
+    const url = `${this.apiUrl}/demo?query=${name}`;
+    return this.http.get<{title:string, image_url:string}[]>(url);
+  }
 }

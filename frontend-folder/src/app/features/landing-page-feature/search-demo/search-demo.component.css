@@ -45,7 +45,9 @@
 }
 
 .container .result img{
-    max-width: 175px;
+    width: 175px;
+    height: 250px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -125,6 +127,7 @@
     
     .container .result img{
         max-width: 150px;
+        max-height: 200px;
     }
     
     .container .result h3{

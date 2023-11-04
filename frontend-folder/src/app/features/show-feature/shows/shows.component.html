@@ -1,24 +1,96 @@
 <div class="screen">
 <app-home-hero></app-home-hero>
 
+<div class="toggle">
+  <mat-button-toggle-group name="view" aria-label="View" [(ngModel)]="selectedView" (ngModelChange)="storeView()" #group="matButtonToggleGroup">
+    <mat-button-toggle value="grid">
+      <mat-icon>grid_view</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="list">
+      <mat-icon>list_view</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
 <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search Bookmarks</mat-label>
       <input matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let bookmark of filteredBookmarks | async" [value]="bookmark.name">
+        <mat-option *ngFor="let bookmark of filteredBookmarks" [value]="bookmark.name">
           {{bookmark.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
   </form>
+
+
+  
   
   <mat-spinner class="spinner" diameter="80" *ngIf="loading"></mat-spinner>
   <h2 *ngIf="this.bookmarks.length == 0 && !loading">{{this.afterLoadText}}</h2>
-  <mat-grid-list [cols]="getGridCols()" *ngIf="!loading && this.bookmarks.length > 0" rowHeight="450px" [gutterSize]="'6px'">
-    <div *ngFor="let bookmark of filteredBookmarks | async">
+
+
+
+<div class="table-container"  >
+<mat-card class="table-card" *ngIf="group.value === 'list'">
+  <mat-card-content>
+    <table matSort mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          <img style="height: 120px; width: 90;" [src]="bookmark.imageUrl" alt="Image" />
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">{{ bookmark.name.length > 30 ? bookmark.name.slice(0,30).trim() + "..." : bookmark.name }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="showType">
+        <mat-header-cell mat-sort-header *matHeaderCellDef> Show Type </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">{{ bookmark.showType }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="episodes">
+        <mat-header-cell *matHeaderCellDef> Episodes </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          {{episodesVisible(bookmark) ? bookmark.episodesWatched : "N/A"}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container  matColumnDef="timestamp">
+        <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          {{timestampVisible(bookmark) ? bookmark.timeStamp : "N/A"}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          <button mat-raised-button (click)="openLinksDialogList(bookmark)">Watch</button>
+          <button mat-raised-button color="primary" (click)="openEditDialogList(bookmark)" >Edit</button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </table>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-paginator [pageSizeOptions]="[4,8,12]" showFirstLastButtons></mat-paginator>
+  </mat-card-footer>
+</mat-card>
+</div>
+
+
+
+  <mat-grid-list [cols]="getGridCols()"  *ngIf="!loading && this.bookmarks.length > 0 && group.value === 'grid' " rowHeight="450px" [gutterSize]="'6px'">
+    <div *ngFor="let bookmark of filteredBookmarks">
         <mat-grid-tile>
-            <app-show-card [bookmark] = "bookmark"></app-show-card>
+            <app-show-card [bookmark]="bookmark"></app-show-card>
         </mat-grid-tile>
       </div>
     
