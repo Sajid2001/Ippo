@@ -31,10 +31,6 @@
     padding-bottom: 15px;
   }
 
-.mat-card-image{
-  border-radius: 30px;
-}
-
 .card {
   position: relative;
   width: 300px; /* Adjust the card width as needed */

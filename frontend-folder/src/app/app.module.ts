@@ -25,7 +25,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';  
 import {MatButtonToggleModule} from '@angular/material/button-toggle'; 
-
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ShowsComponent } from './features/show-feature/shows/shows.component';
@@ -103,7 +103,8 @@ import { ShowTableComponent } from './features/show-feature/show-table/show-tabl
     MatAutocompleteModule,
     MatTableModule,
     MatSortModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatPaginatorModule
   ],
   providers: [
     {

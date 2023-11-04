@@ -1,5 +1,5 @@
 .screen{
-   min-height: 100vh
+   min-height: 150vh
 }
 
 h2{
@@ -20,33 +20,11 @@ h2{
    font-size: larger;
    width: 100%;
    margin: auto;
-   margin-bottom: 50px;
+   margin-bottom: 30px;
  }
  
  .example-full-width {
    width: 100%;
-}
-
-@media (max-width:600px) {
-   .example-form {
-      max-width: 350px;
-    }
-    h2{
-      font-size: medium;
-      margin: 50px;
-    }
-}
-
-@media (max-width: 960px) {
-   .mat-grid-list{
-      max-width: 750px;
-   }
-}
-
-@media (min-width: 1919px) {
-   .mat-grid-list{
-      max-width: 1500px;
-   }
 }
 
 .spinner{
@@ -62,9 +40,11 @@ h2{
 
 .mat-header-cell{
    background-color: black;
+   font-size: 16px;
    justify-content: center;
    color: white;
    text-align: center;
+   margin-bottom: 10px;
 }
 
 .mat-cell{
@@ -72,18 +52,65 @@ h2{
    align-items: center;
    text-align: center;
    display: flex;
+   margin-bottom: 10px;
+   margin-top: 10px;
 }
 
 table{
-   min-width: 70%;
-   margin: auto;
+   width: 1000px;
+   margin: 10px auto;
    margin-bottom: 100px;
-   border-collapse: collapse;
+   border-collapse: collapse;  
 }
 
+
+.table-card{
+   max-width: 1000px;
+   margin:auto;
+   margin-bottom: 100px;
+}
+
+.mat-cell button{
+   margin-left: 10px;
+}
+
+.table-container{
+   overflow-x: auto;
+}
 
 table img{
    height: 120px; 
    width: 90px;
    object-fit: cover;
 }
+
+
+@media (max-width:600px) {
+   .example-form {
+      max-width: 350px;
+    }
+    h2{
+      font-size: medium;
+      margin: 50px;
+    }
+   
+}
+
+@media (max-width: 960px) {
+   .mat-grid-list{
+      max-width: 750px;
+   }
+   table{
+      width: 800px;
+   }
+   .mat-header-cell, .mat-cell{
+      font-size: 13px;
+   }
+}
+
+@media (min-width: 1919px) {
+   .mat-grid-list{
+      max-width: 1500px;
+   }
+}
+

@@ -1,6 +1,17 @@
 <div class="screen">
 <app-home-hero></app-home-hero>
 
+<div class="toggle">
+  <mat-button-toggle-group name="view" aria-label="View" [(ngModel)]="selectedView" (ngModelChange)="storeView()" #group="matButtonToggleGroup">
+    <mat-button-toggle value="grid">
+      <mat-icon>grid_view</mat-icon>
+    </mat-button-toggle>
+    <mat-button-toggle value="list">
+      <mat-icon>list_view</mat-icon>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
 <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search Bookmarks</mat-label>
@@ -13,16 +24,7 @@
     </mat-form-field>
   </form>
 
-  <div class="toggle">
-    <mat-button-toggle-group name="view" aria-label="View" [(ngModel)]="selectedView" (ngModelChange)="storeView()" #group="matButtonToggleGroup">
-      <mat-button-toggle value="grid">
-        <mat-icon>grid_view</mat-icon>
-      </mat-button-toggle>
-      <mat-button-toggle value="list">
-        <mat-icon>list_view</mat-icon>
-      </mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
+
   
   
   <mat-spinner class="spinner" diameter="80" *ngIf="loading"></mat-spinner>
@@ -30,64 +32,58 @@
 
 
 
+<div class="table-container"  >
+<mat-card class="table-card" *ngIf="group.value === 'list'">
+  <mat-card-content>
+    <table matSort mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          <img style="height: 120px; width: 90;" [src]="bookmark.imageUrl" alt="Image" />
+        </mat-cell>
+      </ng-container>
 
-<table *ngIf="group.value === 'list' " mat-table [dataSource]="filteredBookmarks">
-  <ng-container matColumnDef="image">
-    <mat-header-cell *matHeaderCellDef> Poster Image </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">
-      <img style="height: 120px; width: 90;" [src]="bookmark.imageUrl" alt="Image" />
-    </mat-cell>
-  </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">{{ bookmark.name.length > 30 ? bookmark.name.slice(0,30).trim() + "..." : bookmark.name }}</mat-cell>
+      </ng-container>
 
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">{{ bookmark.name.length > 30 ? bookmark.name.slice(0,30).trim() + "..." : bookmark.name }}</mat-cell>
-  </ng-container>
+      <ng-container matColumnDef="showType">
+        <mat-header-cell mat-sort-header *matHeaderCellDef> Show Type </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">{{ bookmark.showType }}</mat-cell>
+      </ng-container>
 
-  <ng-container matColumnDef="showType">
-    <mat-header-cell *matHeaderCellDef> Show Type </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">{{ bookmark.showType }}</mat-cell>
-  </ng-container>
+      <ng-container matColumnDef="episodes">
+        <mat-header-cell *matHeaderCellDef> Episodes </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          {{episodesVisible(bookmark) ? bookmark.episodesWatched : "N/A"}}
+        </mat-cell>
+      </ng-container>
 
-  <ng-container matColumnDef="episodes">
-    <mat-header-cell *matHeaderCellDef> Episodes </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">
-      {{episodesVisible(bookmark) ? bookmark.episodesWatched : "N/A"}}
-    </mat-cell>
-  </ng-container>
+      <ng-container  matColumnDef="timestamp">
+        <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          {{timestampVisible(bookmark) ? bookmark.timeStamp : "N/A"}}
+        </mat-cell>
+      </ng-container>
 
-  <ng-container matColumnDef="timestamp">
-    <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">
-      {{timestampVisible(bookmark) ? bookmark.timeStamp : "N/A"}}
-    </mat-cell>
-  </ng-container>
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let bookmark">
+          <button mat-raised-button (click)="openLinksDialogList(bookmark)">Watch</button>
+          <button mat-raised-button color="primary" (click)="openEditDialogList(bookmark)" >Edit</button>
+        </mat-cell>
+      </ng-container>
 
-  <ng-container matColumnDef="lastSeenDescription">
-    <mat-header-cell *matHeaderCellDef> Last Seen Description </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">
-      {{ bookmark.lastSeenDescription.slice(0, 18).trim() || 'No description' }}
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="watch">
-    <mat-header-cell *matHeaderCellDef> Watch </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">
-      <button mat-flat-button color="accent" (click)="openLinksDialogList(bookmark)">Watch</button>
-    </mat-cell>
-  </ng-container>
-
-  <ng-container matColumnDef="edit">
-    <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
-    <mat-cell *matCellDef="let bookmark">
-      <button mat-flat-button color="primary" (click)="openEditDialogList(bookmark)" >Edit</button>
-    </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</table>
-
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </table>
+  </mat-card-content>
+  <mat-card-footer>
+    <mat-paginator [pageSizeOptions]="[4,8,12]" showFirstLastButtons></mat-paginator>
+  </mat-card-footer>
+</mat-card>
+</div>
 
 
 
