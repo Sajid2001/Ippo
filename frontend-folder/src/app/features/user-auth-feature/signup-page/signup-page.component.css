@@ -1,7 +1,7 @@
 .poster{
     position: relative;
     overflow: hidden;
-    height: 120vh;
+    height: 900px;
 }
 
 .poster img{
@@ -20,19 +20,6 @@
     font-size: large;
     font-weight: bold;
     text-decoration: none;
-}
-
-@media (max-width:843px){
-    .poster{
-        height: 100vh;
-    }
-    .poster a{
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
 }
 
 .poster .after{
@@ -60,4 +47,23 @@
     color: white;
     margin: 20px;
 }
+
+
+@media (max-width:843px){
+    .poster a{
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+
+@media (max-width:600px){
+    .poster{
+        height: 700px;
+    }
+}
+
 

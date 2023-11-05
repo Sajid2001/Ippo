@@ -8,7 +8,11 @@
             <mat-icon>search</mat-icon>
           </button>
     </mat-form-field>
-    <div class="search-results">
+    <div class="loading" *ngIf="loading">
+        <mat-spinner diameter="80"></mat-spinner>
+        <p>Fetching your results</p>
+    </div>
+    <div *ngIf="!loading" class="search-results">
         <div class="result" *ngFor="let result of visibleResults">
             <img [src]="result.image_url"/>
             <h3>{{result.title.slice(0,17).trim()}}<span *ngIf="result.title.length > 17">...</span></h3>

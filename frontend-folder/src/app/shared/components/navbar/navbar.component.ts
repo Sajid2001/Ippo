@@ -3,6 +3,7 @@ import { UserService } from '../../../core/services/user.service';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { NavbarLink } from '../../models/navbarlink.model'
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router:Router,
     private userService: UserService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private snackbarService: SnackbarService
     ) { 
       this.mobileView = this.breakpointObserver.isMatched([Breakpoints.TabletPortrait, Breakpoints.HandsetPortrait])
   }
@@ -42,7 +44,7 @@ export class NavbarComponent implements OnInit {
   ]
 
   ngOnInit(): void {
-    this.breakpointObserver.observe([Breakpoints.TabletPortrait, Breakpoints.HandsetPortrait]).subscribe(result => {
+    this.breakpointObserver.observe([Breakpoints.TabletPortrait, Breakpoints.HandsetPortrait, Breakpoints.HandsetLandscape]).subscribe(result => {
       this.mobileView = result.matches;
     });
   }
@@ -63,6 +65,7 @@ export class NavbarComponent implements OnInit {
     .then(() => {
       window.scrollTo(0,0);
     }); 
+    this.snackbarService.open("You have successfully logged out")
   }
 
   HandleMenu():void{

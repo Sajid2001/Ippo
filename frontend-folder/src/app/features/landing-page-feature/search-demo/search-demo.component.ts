@@ -17,6 +17,7 @@ export class SearchDemoComponent implements OnInit {
    }
   
    searchText:string = ''
+   loading:boolean = false;
 
   searchResults:{title:string, image_url:string}[] = [
     {
@@ -49,11 +50,18 @@ export class SearchDemoComponent implements OnInit {
   }
 
   onClick():void{
+    this.loading = true;
     this.jikanService.getJikanDemoResultsByName(this.searchText).subscribe((results) => {
       console.log(results);
       this.searchResults = results;
       this.visibleResults = results;
       this.observeBreakpoints();
+    }
+    ,(error) => {
+      console.log(error);
+      this.loading = false;
+    },() => {
+      this.loading = false;
     })
   }
 
