@@ -1,5 +1,5 @@
 .screen{
-   min-height: 150vh
+   min-height: 120vh
 }
 
 h2{
@@ -17,7 +17,7 @@ h2{
 .example-form {
    max-width: 550px;
    font-size: larger;
-   width: 80%;
+   width: 75%;
    margin: auto;
    margin-bottom: 30px;
  }
@@ -99,6 +99,11 @@ table img{
     .button-panel{
       width: 100%;
       flex-direction: column;
+    }
+   
+    .mat-table .mat-header-cell,
+    .mat-table .mat-cell{
+      font-size: 14px;
     }
 }
 

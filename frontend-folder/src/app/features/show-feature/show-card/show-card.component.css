@@ -38,9 +38,11 @@
 } */
 
 
-.card:hover .hidden-text{
+.card:hover .hidden-text, .card:active .hidden-text{
   display: inline
 }
+
+
 
 .hidden-text{
   display: none;
