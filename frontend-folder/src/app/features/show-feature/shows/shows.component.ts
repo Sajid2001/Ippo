@@ -52,7 +52,7 @@ export class ShowsComponent implements OnInit {
       this.updateDatasource(this.filteredBookmarks);
     });
 
-    this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge]).subscribe(() => {
+    this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium, Breakpoints.Large, Breakpoints.XLarge]).subscribe(() => {
       this.cdr.detectChanges(); 
     });
     
@@ -115,6 +115,15 @@ export class ShowsComponent implements OnInit {
     ()=>{
       this.loading = false;
     });
+  }
+
+  getRowHeight():string{
+    if(this.breakpointObserver.isMatched([Breakpoints.XSmall])){
+      return "400px"
+    }
+    else{
+      return "450px"
+    }
   }
 
   getGridCols(): number {

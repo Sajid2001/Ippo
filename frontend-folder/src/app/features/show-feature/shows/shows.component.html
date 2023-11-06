@@ -45,24 +45,26 @@
 
       <ng-container matColumnDef="name">
         <mat-header-cell mat-sort-header *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let bookmark">{{ bookmark.name.length > 30 ? bookmark.name.slice(0,30).trim() + "..." : bookmark.name }}</mat-cell>
+        <mat-cell *matCellDef="let bookmark" data-label="name">
+          {{ bookmark.name.length > 30 ? bookmark.name.slice(0,30).trim() + "..." : bookmark.name }}
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="showType">
         <mat-header-cell mat-sort-header *matHeaderCellDef> Show Type </mat-header-cell>
-        <mat-cell *matCellDef="let bookmark">{{ bookmark.showType }}</mat-cell>
+        <mat-cell *matCellDef="let bookmark" data-label="type">{{ bookmark.showType }}</mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="episodes">
         <mat-header-cell *matHeaderCellDef> Episodes </mat-header-cell>
-        <mat-cell *matCellDef="let bookmark">
+        <mat-cell *matCellDef="let bookmark" data-label="Episode">
           {{episodesVisible(bookmark) ? bookmark.episodesWatched : "N/A"}}
         </mat-cell>
       </ng-container>
 
       <ng-container  matColumnDef="timestamp">
         <mat-header-cell *matHeaderCellDef> Timestamp </mat-header-cell>
-        <mat-cell *matCellDef="let bookmark">
+        <mat-cell *matCellDef="let bookmark" data-label="timestamp">
           {{timestampVisible(bookmark) ? bookmark.timeStamp : "N/A"}}
         </mat-cell>
       </ng-container>
@@ -70,8 +72,10 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
         <mat-cell *matCellDef="let bookmark">
-          <button mat-raised-button (click)="openLinksDialogList(bookmark)">Watch</button>
-          <button mat-raised-button color="primary" (click)="openEditDialogList(bookmark)" >Edit</button>
+          <div class="button-panel">
+            <button mat-raised-button (click)="openLinksDialogList(bookmark)">Watch</button>
+            <button mat-raised-button color="primary" (click)="openEditDialogList(bookmark)" >Edit</button>
+          </div>
         </mat-cell>
       </ng-container>
 
@@ -87,7 +91,7 @@
 
 
 
-  <mat-grid-list [cols]="getGridCols()"  *ngIf="!loading && this.bookmarks.length > 0 && group.value === 'grid' " rowHeight="450px" [gutterSize]="'6px'">
+  <mat-grid-list [cols]="getGridCols()"  *ngIf="!loading && this.bookmarks.length > 0 && group.value === 'grid' " [rowHeight]="getRowHeight()" [gutterSize]="'6px'">
     <div *ngFor="let bookmark of filteredBookmarks">
         <mat-grid-tile>
             <app-show-card [bookmark]="bookmark"></app-show-card>

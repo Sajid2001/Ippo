@@ -1,14 +1,10 @@
-.screen{ 
-    margin-bottom: 20px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    overflow: hidden;
-}
 
 .poster{
     position: relative;
     overflow: hidden;
-    height: 900px;
+    min-height: 900px;
+    height: 100vh;
+
 }
 
 .poster img{
@@ -64,7 +60,7 @@
 }
 
 
-@media (max-width:841px){
+@media (max-width:843px){
     .poster a{
         left: 0;
         right: 0;
@@ -76,7 +72,8 @@
 
 @media (max-width:600px){
     .poster {
-        height: 600px;
+        min-height: 700px;
+        height: 100vh;
     }
 }
 

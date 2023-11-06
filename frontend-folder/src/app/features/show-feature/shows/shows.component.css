@@ -15,10 +15,9 @@ h2{
 }
 
 .example-form {
-   min-width: 150px;
    max-width: 550px;
    font-size: larger;
-   width: 100%;
+   width: 80%;
    margin: auto;
    margin-bottom: 30px;
  }
@@ -33,9 +32,9 @@ h2{
 
 .toggle {
    display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 50px;
 }
 
 .mat-header-cell{
@@ -45,6 +44,13 @@ h2{
    color: white;
    text-align: center;
    margin-bottom: 10px;
+}
+
+.button-panel{
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   margin: auto;
 }
 
 .mat-cell{
@@ -57,21 +63,17 @@ h2{
 }
 
 table{
-   width: 1000px;
+   width: 100%;
    margin: 10px auto;
    margin-bottom: 100px;
    border-collapse: collapse;  
 }
 
-
 .table-card{
    max-width: 1000px;
+   width: 80%;
    margin:auto;
    margin-bottom: 100px;
-}
-
-.mat-cell button{
-   margin-left: 10px;
 }
 
 .table-container{
@@ -84,11 +86,72 @@ table img{
    object-fit: cover;
 }
 
+@media (min-width: 1919px) {
+   .mat-grid-list{
+      max-width: 1500px;
+   }
+}
+
+@media (max-width: 960px) {
+   .mat-grid-list{
+      max-width: 720px;
+   }
+    .button-panel{
+      width: 100%;
+      flex-direction: column;
+    }
+}
+
 
 @media (max-width:600px) {
-   .example-form {
-      max-width: 350px;
+
+     .mat-table .mat-row {
+      border-bottom: 5px solid #ddd;
+      display: block;
     }
+    .mat-table {
+      border: 0;
+      vertical-align: middle
+    }
+  
+    .mat-table caption {
+      font-size: 1em;
+    }
+
+    .mat-table .mat-header-cell {
+      border: 10px solid;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+   .mat-table .mat-cell {
+      display: block;
+      font-size: 1em;
+      text-align: right;
+      font-weight: bold;
+      margin-bottom: 4%;
+    }
+    .mat-table .mat-cell:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-size: .85em;
+    }
+
+    .mat-table .mat-cell:last-child {
+      border-bottom: 0;
+      width: 100%;
+    }
+      .mat-table .mat-cell:first-child {
+      margin-top: 4%;
+    }
+
+
     h2{
       font-size: medium;
       margin: 50px;
@@ -96,21 +159,5 @@ table img{
    
 }
 
-@media (max-width: 960px) {
-   .mat-grid-list{
-      max-width: 750px;
-   }
-   table{
-      width: 800px;
-   }
-   .mat-header-cell, .mat-cell{
-      font-size: 13px;
-   }
-}
 
-@media (min-width: 1919px) {
-   .mat-grid-list{
-      max-width: 1500px;
-   }
-}
 

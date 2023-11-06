@@ -1,7 +1,8 @@
 .poster{
     position: relative;
     overflow: hidden;
-    height: 900px;
+    min-height: 900px;
+    height: 100vh;
 }
 
 .poster img{
@@ -62,7 +63,8 @@
 
 @media (max-width:600px){
     .poster{
-        height: 700px;
+        min-height: 700px;
+        height: 100vh;
     }
 }
 

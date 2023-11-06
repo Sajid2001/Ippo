@@ -26,8 +26,8 @@ export class LandingFaqComponent implements OnInit {
       description:"Ippo is relatively simple to use. Just search up any anime you would like to keep track of, add in any additional information you need, and create a new bookmark. For more information, refer to our Github repository, which is linked in the footer"
     },
     {
-      title:"What anime can I create a bookmark for on Ippo?",
-      description:"Ippo uses the Jikan API, which scrapes all its information from MyAnimeList. Any anime that is listed there is an anime you can add a bookmark for."
+      title:"What anime can I track on Ippo?",
+      description:"Ippo uses the Jikan API, which scrapes all its information from MyAnimeList. Any anime that is listed on MAL is an anime you can track."
     },
     {
       title:"How can I contribute to Ippo?",
