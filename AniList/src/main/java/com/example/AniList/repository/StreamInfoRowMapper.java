@@ -14,6 +14,8 @@ public class StreamInfoRowMapper implements RowMapper<StreamInfo>
         streamInfo.setStreamInfoId(resultSet.getInt("stream_info_id"));
         streamInfo.setShowId(resultSet.getInt("show_id"));
         streamInfo.setStream(resultSet.getString("stream"));
+        streamInfo.setLogoUrl(resultSet.getString("logo_url"));
+        streamInfo.setCaption(resultSet.getString("caption"));
         streamInfo.setUrl(resultSet.getString("url"));
         return streamInfo;
     }

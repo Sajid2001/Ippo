@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS stream_info (
     stream_info_id INT AUTO_INCREMENT PRIMARY KEY,
     show_id INT,  -- Foreign key referencing the shows table
     stream VARCHAR(255),
+    logo_url VARCHAR(255),
+    caption VARCHAR(255),
     url VARCHAR(255),
     FOREIGN KEY (show_id) REFERENCES shows(show_id) ON DELETE CASCADE
 );
