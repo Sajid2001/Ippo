@@ -3,22 +3,6 @@
     font-weight: bold;
   }
 
-  @media(max-width:600px){
-    h1{
-      font-size: x-large;
-    }
-    h2{
-      font-size: large;
-    }
-    h4{
-      font-size: small;
-    }
-    .example-card{
-      margin: 20px;
-    }
-    
-  }
-
   h3{
     font-size: x-large;
     font-weight: bold;
@@ -54,9 +38,11 @@
 } */
 
 
-.card:hover .hidden-text{
+.card:hover .hidden-text, .card:active .hidden-text{
   display: inline
 }
+
+
 
 .hidden-text{
   display: none;
@@ -66,9 +52,6 @@
   margin: 0;
 }
 
-.remind-text{
-  font-weight: bold;
-}
 
 .mat-button{
   margin: 10px;
@@ -84,34 +67,29 @@
   text-decoration: underline;
 }
 
-.stream-link{
-  color: black;
-  text-decoration: none;
-  border-radius: 3px;
-  background-color: white;
-  margin-right: 12px;
-  margin-bottom:5px;
-  padding:6px;
-  font-size: medium;
-  font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+@media(max-width:600px){
 
+  .card {
+    position: relative;
+    width: 262px !important; /* Adjust the card width as needed */
+    height: 350px !important; /* Adjust the card height as needed */
+    overflow: hidden;
+  }
 
-.stream-link:hover{
-  color: rgba(0, 0, 0, 0.688);
-}
+  h1{
+    font-size: x-large;
+  }
 
-.links{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
+  h3{
+    font-size: large;
+    padding-bottom: 15px;
+    padding-top: 10px;
+  }
 
-.logo-image{
-  height: 20px;
-  padding: 5px;
+  p{
+    font-size: medium;
+    padding-bottom: 15px;
+  }
+  
 }
 

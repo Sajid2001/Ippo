@@ -1,14 +1,10 @@
-.screen{ 
-    margin-bottom: 20px;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-    overflow: hidden;
-}
 
 .poster{
     position: relative;
     overflow: hidden;
-    height: 120vh;
+    min-height: 900px;
+    height: 100vh;
+
 }
 
 .poster img{
@@ -28,19 +24,6 @@
     font-size: large;
     font-weight: bold;
     text-decoration: none;
-}
-
-@media (max-width:841px){
-    .poster{
-        height: 90vh;
-    }
-    .poster a{
-        left: 0;
-        right: 0;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
 }
 
 .poster .after{
@@ -74,5 +57,23 @@
 .hero-text{
     color: white;
     margin: 20px;
+}
+
+
+@media (max-width:843px){
+    .poster a{
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+@media (max-width:600px){
+    .poster {
+        min-height: 700px;
+        height: 100vh;
+    }
 }
 

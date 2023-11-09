@@ -84,6 +84,14 @@ public class StreamInfoController {
             {
                 existingStreamInfo.setStream(updatedStreamInfo.getStream());
             }
+            if (updatedStreamInfo.getLogoUrl() != null)
+            {
+                existingStreamInfo.setLogoUrl(updatedStreamInfo.getStream());
+            }
+            if (updatedStreamInfo.getCaption() != null)
+            {
+                existingStreamInfo.setCaption(updatedStreamInfo.getStream());
+            }
             if (updatedStreamInfo.getUrl() != null)
             {
                 existingStreamInfo.setUrl(updatedStreamInfo.getStream());

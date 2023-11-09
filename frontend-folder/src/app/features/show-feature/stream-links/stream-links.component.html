@@ -13,8 +13,8 @@
 
         <div *ngFor="let link of streamLinks">
             <a target="_blank" [attr.href]="link.url" href="">
-                <img class="logo-image" *ngIf="streamingPlatforms[link.stream]" [src]="streamingPlatforms[link.stream]" alt="Platform Image"> 
-                <ng-container *ngIf="!streamingPlatforms[link.stream]">
+                <img class="logo-image" *ngIf="link.logoUrl !== '' " [src]="link.logoUrl" [alt]="link.stream"> 
+                <ng-container *ngIf="link.logoUrl === '' ">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo-off" width="40" height="40" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                         <path d="M15 8h.01"></path>
@@ -24,7 +24,14 @@
                         <path d="M3 3l18 18"></path>
                     </svg>
                 </ng-container>
-                {{link.stream}}
+                <div style="display: flex; flex-direction: column; ">
+                <div>
+                    {{link.stream}}
+                </div>
+                <caption *ngIf="link.caption !== '' " style="font-size: 12px; text-align: left;">
+                    {{link.caption.length > 35 ? link.caption.slice(2,35).trim() + "...": link.caption.slice(2,link.caption.length)}}
+                </caption>
+                </div>
             </a>
         </div>
         <div *ngIf="this.streamLinks.length === 0 && customUrl === '' && loading === false">

@@ -13,6 +13,8 @@ public class StreamInfoSerializer extends JsonSerializer<StreamInfo>
     {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("stream", streamInfo.getStream());
+        jsonGenerator.writeStringField("logoUrl", streamInfo.getLogoUrl());
+        jsonGenerator.writeStringField("caption", streamInfo.getCaption());
         jsonGenerator.writeStringField("url", streamInfo.getUrl());
         jsonGenerator.writeEndObject();
     }

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Bookmark } from '../../../shared/models/bookmark.model';
 import {MatDialog} from '@angular/material/dialog';
-import { EditBookmarkFormComponent } from '../edit-bookmark-form/edit-bookmark-form.component';
 import { BookmarkService } from 'src/app/core/services/bookmark.service';
 
 

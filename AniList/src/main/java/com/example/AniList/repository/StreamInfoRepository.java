@@ -52,14 +52,14 @@ public class StreamInfoRepository {
 
     public void saveStreamInfo(StreamInfo streamInfo)
     {
-        String sql = "INSERT INTO stream_info (show_id, stream, url) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, streamInfo.getShowId(), streamInfo.getStream(), streamInfo.getUrl());
+        String sql = "INSERT INTO stream_info (show_id, stream, logo_url, caption, url) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, streamInfo.getShowId(), streamInfo.getStream(), streamInfo.getLogoUrl(), streamInfo.getCaption(), streamInfo.getUrl());
     }
 
     public void updateStreamInfo(int stream_info_id, StreamInfo streamInfo)
     {
-        String sql = "UPDATE stream_info SET stream=?, url=?, WHERE stream_info_id=?";
-        jdbcTemplate.update(sql, streamInfo.getStream(), streamInfo.getUrl(), stream_info_id);
+        String sql = "UPDATE stream_info SET stream=?, logo_irl=?, caption=?, url=?, WHERE stream_info_id=?";
+        jdbcTemplate.update(sql, streamInfo.getStream(), streamInfo.getLogoUrl(), streamInfo.getCaption(), streamInfo.getUrl(), stream_info_id);
     }
 
     public void deleteStreamInfo(int stream_info_id)

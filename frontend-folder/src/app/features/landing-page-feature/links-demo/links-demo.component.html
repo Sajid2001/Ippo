@@ -9,7 +9,10 @@
         <div class="card">
             <h3>{{demoName}}</h3>
             <div class="link-list">
-                <a target="_blank" [href]="link.url" *ngFor="let link of demoLinks"><img class="logo-image" *ngIf="streamingPlatforms[link.stream]" [src]="streamingPlatforms[link.stream]" alt="Platform Image"/> {{link.stream}}</a>
+                <a target="_blank" [href]="link.url" *ngFor="let link of demoLinks">
+                    <img class="logo-image" *ngIf="link.logoUrl" [src]="link.logoUrl" alt="Platform Image"/> 
+                        <div>{{link.stream}}</div>       
+                </a>
             </div>
         </div>
         <p>*Example Links</p>

@@ -1,10 +1,13 @@
 .container{
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 60px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 
 .container h2{
@@ -12,8 +15,8 @@
     font-family: 'Mochiy Pop One', sans-serif;
 }
 
-.container .accordian{
-    width: 600px;
+.accordian{
+    max-width: 600px;
 }
 
 .accordian .panel{
@@ -45,25 +48,23 @@
 
 @media screen and (min-width:600px) and (max-width:843px){
     .container{
-        min-height: 60vh;
         padding-top:80px;
         padding-bottom: 80px;
+        padding-left: 70px;
+        padding-right: 70px;
     }
 }
 
 @media (max-width:599px){
     .container{
-        min-height: 60vh;
         gap: 50px;
         padding-top:100px;
         padding-bottom: 100px;
+        padding-left: 50px;
+        padding-right: 50px;
     }
     .container h2{
         font-size: 36px;
-    }
-    
-    .container .accordian{
-        width: 380px;
     }
     
     .accordian .panel{
@@ -71,7 +72,7 @@
     }
     
     .accordian .title{
-        font-size: 20px;
+        font-size: 16px;
         padding-top: 20px;
         padding-bottom: 20px;
         line-height: 20px;
@@ -91,19 +92,11 @@
 }
 
 @media (max-width:400px){
-    .container .accordian{
-        width: 300px;
-    }
-    
-    .accordian .panel{
-        padding: 4px;
-    }
-    
+
     .accordian .title{
-        font-size: 16px;
         padding-top: 16px;
         padding-bottom: 16px;
-        line-height: 16px;
+        line-height: 20px;
     }
     
     .accordian .description{
@@ -111,8 +104,7 @@
         font-weight: 400;
         line-height: 24px;
     }
-
-        
+ 
     .container button{
         min-width: 150px;
         font-size: 16px;
