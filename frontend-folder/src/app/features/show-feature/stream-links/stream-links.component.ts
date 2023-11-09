@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { streamingPlatforms } from '../../../shared/models/streaming-platforms';
 import { StreamLink } from '../../../shared/models/streamlink.model';
 import { StreamlinkService } from '../../../core/services/streamlink.service';
 
@@ -25,8 +24,6 @@ export class StreamLinksComponent implements OnInit {
   streamLinks:StreamLink[] = []
   customUrl:string;
   loading:boolean = false;
-
-  streamingPlatforms = streamingPlatforms;
 
   retrieveStreamLinks(): void {
     this.loading = true;
