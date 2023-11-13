@@ -14,7 +14,27 @@ Ippo is an open-source service that makes tracking your favorite anime and reduc
 
 ## How To Use
 
+### Creating a Bookmark
 
+https://github.com/Sajid2001/Ippo/assets/60523377/7a9d005e-e4b2-485c-acaf-0f05cd15313a
+
+https://github.com/Sajid2001/Ippo/assets/60523377/46b044f1-2118-4f85-88b6-df087633be5c
+
+### Editing a Bookmark
+
+https://github.com/Sajid2001/Ippo/assets/60523377/8ae2cb10-651a-4712-84aa-65c3a3659448
+
+### Stream Links
+
+https://github.com/Sajid2001/Ippo/assets/60523377/0e1db68b-8327-4777-b337-a021f6862205
+
+### Filtering
+
+https://github.com/Sajid2001/Ippo/assets/60523377/0043c66e-2ed7-41de-9c49-d25ea69e55e5
+
+### List View
+
+https://github.com/Sajid2001/Ippo/assets/60523377/fc865bda-2e14-43e3-bf5d-f470ea6d7b7f
 
 ## How To Contribute
 
