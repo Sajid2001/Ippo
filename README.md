@@ -1,9 +1,16 @@
 # Ippo
 ## Track Your Favorite Anime, One Bookmark At A Time
 
-Ippo is an open-source service that makes tracking your favorite anime and reduces the friction for you.
+Ippo is an open source anime tracking site that makes keeping up with your favorite anime easier.
 
-## Technolgies Used
+## Features
+
+* [Create Bookmarks for your favorite anime TV series or movie](#creating-a-bookmark)
+* [Stream Links on every bookmark, which makes continuing where you left off easier](#stream-links)
+* [Autocomplete form to filter your bookmarks](#filtering)
+* [Grid and Table view](#list-view)
+
+## Stack
 
 * Angular (JavaScript)
 * Angular Material
