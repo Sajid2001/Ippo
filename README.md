@@ -1,6 +1,6 @@
 # Ippo
 ## Track Your Favorite Anime, One Bookmark At A Time
-http://localhost:4200/assets/logo.png
+![Ippo Logo](http://localhost:4200/assets/logo.png)
 
 Ippo is an open source anime tracking site that makes keeping up with your favorite anime easier.
 
