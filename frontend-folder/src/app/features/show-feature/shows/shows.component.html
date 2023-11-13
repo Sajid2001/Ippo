@@ -1,7 +1,7 @@
 <div class="screen">
 <app-home-hero></app-home-hero>
 
-<div class="toggle">
+<div class="toggle" *ngIf="bookmarks.length > 0">
   <mat-button-toggle-group name="view" aria-label="View" [(ngModel)]="selectedView" (ngModelChange)="storeView()" #group="matButtonToggleGroup">
     <mat-button-toggle value="grid">
       <mat-icon>grid_view</mat-icon>
@@ -12,7 +12,7 @@
   </mat-button-toggle-group>
 </div>
 
-<form class="example-form">
+<form class="example-form" *ngIf="bookmarks.length > 0">
     <mat-form-field class="example-full-width">
       <mat-label>Search Bookmarks</mat-label>
       <input matInput [formControl]="myControl" [matAutocomplete]="auto">
@@ -32,8 +32,8 @@
 
 
 
-<div class="table-container"  >
-<mat-card class="table-card" *ngIf="group.value === 'list'">
+<div class="table-container" *ngIf="bookmarks.length > 0 && selectedView === 'list'">
+<mat-card class="table-card">
   <mat-card-content>
     <table matSort mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="image">
@@ -91,7 +91,7 @@
 
 
 
-  <mat-grid-list [cols]="getGridCols()"  *ngIf="!loading && this.bookmarks.length > 0 && group.value === 'grid' " [rowHeight]="getRowHeight()" [gutterSize]="'6px'">
+  <mat-grid-list [cols]="getGridCols()"  *ngIf="!loading && this.bookmarks.length > 0 && selectedView === 'grid' " [rowHeight]="getRowHeight()" [gutterSize]="'6px'">
     <div *ngFor="let bookmark of filteredBookmarks">
         <mat-grid-tile>
             <app-show-card [bookmark]="bookmark"></app-show-card>

@@ -24,7 +24,7 @@ export class ShowsComponent implements OnInit {
   bookmarks:Bookmark[] = [];
   loading:boolean = false;
   searchText: string = ''; 
-  afterLoadText:string = "It appears like you do not have any bookmarks. Click the button above to create some.";
+  afterLoadText:string = "It appears that you do not have any bookmarks. Click the button above to create some.";
   filteredBookmarks: Bookmark[] = [];
   selectedView = localStorage.getItem('selectedView') || 'grid';
   displayedColumns: string[] = ['image', 'name', 'showType', 'episodes', 'timestamp' , 'actions'];
@@ -61,10 +61,10 @@ export class ShowsComponent implements OnInit {
   pushNewBookmark():void{
     this.bookmarkService.bookmarkAdded$.subscribe((addedBookmark) => {
       this.bookmarks.push(addedBookmark)
-      this.table.renderRows()
       this.filteredBookmarks = this.filterItems(this.myControl.value);
       if (this.selectedView == 'list'){
         this.updateDatasource(this.filteredBookmarks);
+        this.table.renderRows()
       }
     });
   }
@@ -78,7 +78,10 @@ export class ShowsComponent implements OnInit {
       if (index !== -1) {
         this.bookmarks[index] = editedBookmark;
       }
-      this.table.renderRows()
+      if(this.selectedView == 'list'){
+        this.table.renderRows()
+      }
+      
     });
   }
 
@@ -92,9 +95,9 @@ export class ShowsComponent implements OnInit {
         this.filteredBookmarks = this.filterItems(this.myControl.value);
         if (this.selectedView == 'list'){
           this.updateDatasource(this.filteredBookmarks);
+          this.table.renderRows()
         }
       }
-      this.table.renderRows()
     });
   }
   
@@ -110,7 +113,7 @@ export class ShowsComponent implements OnInit {
     (error) => {
       console.log(error);
       this.loading = false;
-      this.afterLoadText = "It appears something went wrong. Try again later."
+      this.afterLoadText = "It appears that something went wrong. Try again later."
     },
     ()=>{
       this.loading = false;
