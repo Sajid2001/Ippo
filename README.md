@@ -1,6 +1,8 @@
-# <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;"><img src="https://media.discordapp.net/attachments/624756616700624908/1165413867715821588/OIG_copy.png?ex=656272be&is=654ffdbe&hm=96ea4921961a7182c925ff1af45af3f801d01cd8d2609fa3be4809aed95efd85&=&width=600&height=600" alt="logo" height="100px"/> <span style="margin-left: 10px;">Ippo</span> </div>
+# Ippo
 
 ## Track Your Favorite Anime, One Bookmark At A Time
+
+<img src="https://media.discordapp.net/attachments/624756616700624908/1165413867715821588/OIG_copy.png?ex=656272be&is=654ffdbe&hm=96ea4921961a7182c925ff1af45af3f801d01cd8d2609fa3be4809aed95efd85&=&width=600&height=600" alt="logo" height="200px"/>
 
 Ippo is an open source anime tracking site that makes keeping up with your favorite anime easier.
 
