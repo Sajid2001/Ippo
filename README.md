@@ -1,4 +1,4 @@
-# <img src = "http://localhost:4200/assets/logo.png" alt="logo" height="50"/> Ippo
+# <img src = "http://localhost:4200/assets/logo.png" height="50"/> Ippo
 ## Track Your Favorite Anime, One Bookmark At A Time
 
 ![logo](https://github.com/Sajid2001/Ippo/assets/60523377/2b261969-f0e2-4cfe-bd95-7e8adf2a1799)
