@@ -5,7 +5,7 @@ Ippo is an open source anime tracking site that makes keeping up with your favor
 
 ## Features
 
-* [Create Bookmarks for your favorite anime TV series or movie](#creating-a-bookmark)
+* [Create Bookmarks for your favorite anime TV series or movie](#creating a bookmark)
 * [Stream Links on every bookmark, which makes continuing where you left off easier](#stream-links)
 * [Autocomplete form to filter your bookmarks](#filtering)
 * [Grid and Table view](#list-view)
