@@ -1,4 +1,4 @@
-# ![logo](https://github.com/Sajid2001/Ippo/assets/60523377/2b261969-f0e2-4cfe-bd95-7e8adf2a1799) {:width="100px"} Ippo
+# <img src = "https://media.discordapp.net/attachments/624756616700624908/1165413867715821588/OIG_copy.png?ex=656272be&is=654ffdbe&hm=96ea4921961a7182c925ff1af45af3f801d01cd8d2609fa3be4809aed95efd85&=&width=600&height=600" alt = "logo" height="100px"/> Ippo
 ## Track Your Favorite Anime, One Bookmark At A Time
 
 Ippo is an open source anime tracking site that makes keeping up with your favorite anime easier.
