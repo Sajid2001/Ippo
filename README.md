@@ -7,7 +7,7 @@ Ippo is an open-source service that makes tracking your favorite anime and reduc
 
 * Angular (JavaScript)
 * Angular Material
-* Spring Boot(Java, Maven)
+* Spring Boot (Java, Maven)
 * OpenSSL
 * MySQL
 * Docker
