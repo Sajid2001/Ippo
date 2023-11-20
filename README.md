@@ -35,6 +35,10 @@ https://github.com/Sajid2001/Ippo/assets/60523377/46b044f1-2118-4f85-88b6-df0876
 
 https://github.com/Sajid2001/Ippo/assets/60523377/8ae2cb10-651a-4712-84aa-65c3a3659448
 
+### Quick MAL Access
+
+https://github.com/Sajid2001/Ippo/assets/60523377/f81c277c-fd7f-4f5c-b621-71882fb4c3d9
+
 ### Stream Links
 
 https://github.com/Sajid2001/Ippo/assets/60523377/0e1db68b-8327-4777-b337-a021f6862205
