@@ -24,7 +24,7 @@
         <input type="text" matInput [(ngModel)]="newBookmark.timeStamp">
       </mat-form-field>
       <mat-form-field [ngClass]="{'short-input-field': newBookmark.showType !== 'Music', 'long-input-field':  newBookmark.showType === 'Music'}">
-        <mat-label>Custom Url</mat-label>
+        <mat-label>Custom Url (Optional)</mat-label>
         <input type="url" matInput [(ngModel)]="newBookmark.customUrl">
       </mat-form-field>
     </div>

@@ -13,7 +13,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
     margin-left: 20px;
     color: orangered;
   }
-
+/* Firefox */
+@-moz-document url-prefix() {
   input[type="password"] {
-    font-size: 8px; /* Adjust the font size as needed */
+    font-size: 8px; /* Adjust the font size for Firefox */
   }
+}
