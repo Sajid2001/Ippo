@@ -1,6 +1,6 @@
 # Ippo
 
-## Bookmark Your Favorite Anime, One Bookmark At A Time
+## Track Of Your Favorite Anime, One Bookmark At A Time
 
 <img src="https://media.discordapp.net/attachments/624756616700624908/1165413867715821588/OIG_copy.png?ex=656272be&is=654ffdbe&hm=96ea4921961a7182c925ff1af45af3f801d01cd8d2609fa3be4809aed95efd85&=&width=600&height=600" alt="logo" height="200px"/>
 
