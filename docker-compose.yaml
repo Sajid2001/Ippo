@@ -25,6 +25,7 @@ services:
       - MYSQL_URL=jdbc:mysql://db:3306/anilist_db
       - MYSQL_USERNAME=root
       - MYSQL_PASSWORD=hello_world
+      - ALLOWED_ORIGIN="http://localhost:4200"
     networks:
       - mynetwork 
   
