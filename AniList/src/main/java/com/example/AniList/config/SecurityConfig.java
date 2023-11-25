@@ -8,6 +8,7 @@ import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +43,9 @@ import java.util.List;
 public class SecurityConfig {
     private final RsaKeyProperties rsaKeys;
     private final UserRepository userRepository;
+
+    @Value("${allowed.origin}")
+    private String allowedOrigin;
 
     public SecurityConfig(RsaKeyProperties rsaKeys, UserRepository userRepository)
     {
@@ -118,7 +122,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedOrigins(Arrays.asList(allowedOrigin));
         configuration.setAllowedMethods(Arrays.asList("*"));
         configuration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
