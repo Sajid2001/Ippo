@@ -20,7 +20,7 @@ RUN mvn package -DskipTests
 
 # Second stage: create a slim image
 FROM eclipse-temurin:17-jdk-alpine
-VOLUME /tmp
+# VOLUME /tmp
 
 # Copy the compiled application JAR
 COPY --from=build /app/target/AniList-0.0.1-SNAPSHOT.jar /app.jar
