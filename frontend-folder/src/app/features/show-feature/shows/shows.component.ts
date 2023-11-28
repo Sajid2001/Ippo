@@ -62,7 +62,7 @@ export class ShowsComponent implements OnInit {
     this.bookmarkService.bookmarkAdded$.subscribe((addedBookmark) => {
       this.bookmarks.push(addedBookmark)
       this.filteredBookmarks = this.filterItems(this.myControl.value);
-      if (this.selectedView == 'list'){
+      if (this.selectedView === 'list'){
         this.updateDatasource(this.filteredBookmarks);
         this.table.renderRows()
       }
@@ -78,7 +78,7 @@ export class ShowsComponent implements OnInit {
       if (index !== -1) {
         this.bookmarks[index] = editedBookmark;
       }
-      if(this.selectedView == 'list'){
+      if(this.selectedView === 'list'){
         this.table.renderRows()
       }
       
@@ -93,7 +93,7 @@ export class ShowsComponent implements OnInit {
       if (index !== -1) {
         this.bookmarks.splice(index, 1);
         this.filteredBookmarks = this.filterItems(this.myControl.value);
-        if (this.selectedView == 'list'){
+        if (this.selectedView === 'list'){
           this.updateDatasource(this.filteredBookmarks);
           this.table.renderRows()
         }
@@ -106,8 +106,12 @@ export class ShowsComponent implements OnInit {
     this.bookmarkService.getBookmarks().subscribe((bookmarks) => {
       this.bookmarks = bookmarks;
       this.filteredBookmarks = bookmarks;
-      if (this.selectedView == 'list'){
+      if (this.selectedView === 'list'){
         this.updateDatasource(this.filteredBookmarks);
+        console.log('true');
+      }
+      else{
+        console.log('false');
       }
     },
     (error) => {

@@ -1,7 +1,7 @@
 <div class="screen">
 <app-home-hero></app-home-hero>
 
-<div class="toggle" *ngIf="bookmarks.length > 0">
+<div class="toggle">
   <mat-button-toggle-group name="view" aria-label="View" [(ngModel)]="selectedView" (ngModelChange)="storeView()" #group="matButtonToggleGroup">
     <mat-button-toggle value="grid">
       <mat-icon>grid_view</mat-icon>
@@ -32,7 +32,7 @@
 
 
 
-<div class="table-container" *ngIf="bookmarks.length > 0 && selectedView === 'list'">
+<div class="table-container" *ngIf="selectedView === 'list'">
 <mat-card class="table-card">
   <mat-card-content>
     <table matSort mat-table [dataSource]="dataSource">
