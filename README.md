@@ -6,6 +6,8 @@
 
 Ippo is an open source anime bookmarking site that makes keeping up with your favorite anime easier.
 
+Deployed Beta Site: https://ippo-live.netlify.app
+
 ## Features
 
 * [Create Bookmarks for your favorite anime TV series or movie](#creating-a-bookmark)
@@ -55,14 +57,15 @@ https://github.com/Sajid2001/Ippo/assets/60523377/fc865bda-2e14-43e3-bf5d-f470ea
 
 ### Files Needed
 1. In ```./frontend-folder/src/environments``` , create a file named ```environemts.ts``` and a file named ```environment.prod.ts```. Check the ```sample.environment.ts``` file for what variables need to be added.
-2. **If you are not using Docker** and would like to run the project on your local machine, navigate ```./AniList/src/main/java/resources``` and run the following commands:
+2. **If you are not using Docker** and would like to run the project on your local machine, navigate to ```./AniList/src/main/java/resources``` and run the following commands:
+   
    ```
     mkdir certs
     openssl genrsa -out /certs/keypair.pem 2048 && \
     openssl rsa -in /certs/keypair.pem -pubout -out /certs/public.pem && \
     openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in /certs/keypair.pem -out /certs/private.pem
    ```
-   Make sure OpenSSL is already installed on your computers
+   Make sure OpenSSL is already installed on your computer before running these commands
 
 ### Instructions (Using Docker)
 
@@ -75,6 +78,19 @@ Important Note: Uncomment the line 23 of the Dockerfile inside the AniList folde
 1. Open the ```AniList``` folder in Eclipse, mark the ```./Anilist/src/main/java``` folder as the sources root, install the dependencies using the Maven plugin, and run the application.
 2. Navigate to ```./frontend-folder``` and run the frontend using the command ```ng serve```
 3. The backend should run on localhost:8080 and the frontend should run on localhost:4200
+
+### Environment Variables
+
+Backend: 
+
+```
+MYSQL_URL = JDBC connection url of local dev database
+MYSQL_USERNAME = Username of local database, usually the root.
+MYSQL_PASSWORD = Password of local database
+ALLOWED_ORIGIN = Allowed origin to prevent cors error. For dev purposes, use http://localhost:4200
+```
+
+* Dummy Environment Variables provided through ```docker-compose```
 
 ## Find Any Bugs?
 If you found an issue or would like to submit an improvement to this project, please submit an issue using the issues tab above. If you would like to submit a Pull Request with a fix, reference the issue that you created.

@@ -12,8 +12,8 @@ public class User {
     @Email( message = "Must be a valid email address")
     @NotBlank(message = "Email cannot be blank")
     private String email;
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[!.,/]).{8,}$", message = "Must be at least 8 letters long" +
-            " and contain an uppercase, lowercase, and special character")
+    @Pattern(regexp = "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[^\\w\\d]).*$", message = "Must be at least 8 letters long" +
+            " and contain one uppercase, lowercase, and special character")
     private String password;
 
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Bookmark } from '../../../shared/models/bookmark.model';
-import { BookmarkService } from '../../../core/services/bookmark.service';
-import { SnackbarService } from '../../../core/services/snackbar.service';
-import { ConfirmDialogService } from '../../../core/services/confirm-dialog.service';
+import { Bookmark } from '../../../../shared/models/bookmark.model';
+import { BookmarkService } from '../../services/bookmark.service';
+import { SnackbarService } from '../../../../shared/services/snackbar.service';
+import { ConfirmDialogService } from '../../services/confirm-dialog.service';
 
 
 @Component({

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { StreamLink } from '../../shared/models/streamlink.model';
+import { StreamLink } from '../../../shared/models/streamlink.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

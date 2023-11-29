@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { StreamLink } from '../../../shared/models/streamlink.model';
-import { StreamlinkService } from '../../../core/services/streamlink.service';
+import { StreamLink } from '../../../../shared/models/streamlink.model';
+import { StreamlinkService } from '../../services/streamlink.service';
 
 @Component({
   selector: 'app-stream-links',

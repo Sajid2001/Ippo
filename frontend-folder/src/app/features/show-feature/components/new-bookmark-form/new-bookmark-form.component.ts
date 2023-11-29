@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { BookmarkService } from '../../../core/services/bookmark.service';
-import { JikanService } from '../../../core/services/jikan.service';
-import { Bookmark } from '../../../shared/models/bookmark.model';
-import { JikanResult } from '../../../shared/models/jikanresult.model';
-import { SnackbarService } from '../../../core/services/snackbar.service';
+import { BookmarkService } from '../../services/bookmark.service';
+import { JikanService } from '../../../../shared/services/jikan.service';
+import { Bookmark } from '../../../../shared/models/bookmark.model';
+import { JikanResult } from '../../../../shared/models/jikanresult.model';
+import { SnackbarService } from '../../../../shared/services/snackbar.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 

@@ -28,27 +28,26 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
 
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { ShowsComponent } from './features/show-feature/shows/shows.component';
-import { ShowCardComponent } from './features/show-feature/show-card/show-card.component';
-import { HomeHeroComponent } from './features/show-feature/home-hero/home-hero.component';
-import { NewBookmarkFormComponent } from './features/show-feature/new-bookmark-form/new-bookmark-form.component';
-import { EditBookmarkFormComponent } from './features/show-feature/edit-bookmark-form/edit-bookmark-form.component';
-import { StreamLinksComponent } from './features/show-feature/stream-links/stream-links.component';
-import { LoginPageComponent } from './features/user-auth-feature/login-page/login-page.component';
-import { LoginFormComponent } from './features/user-auth-feature/login-form/login-form.component';
-import { SignupPageComponent } from './features/user-auth-feature/signup-page/signup-page.component';
-import { SignupFormComponent } from './features/user-auth-feature/signup-form/signup-form.component';
+import { ShowsComponent } from './features/show-feature/components/shows/shows.component';
+import { ShowCardComponent } from './features/show-feature/components/show-card/show-card.component';
+import { HomeHeroComponent } from './features/show-feature/components/home-hero/home-hero.component';
+import { NewBookmarkFormComponent } from './features/show-feature/components/new-bookmark-form/new-bookmark-form.component';
+import { EditBookmarkFormComponent } from './features/show-feature/components/edit-bookmark-form/edit-bookmark-form.component';
+import { StreamLinksComponent } from './features/show-feature/components/stream-links/stream-links.component';
+import { LoginPageComponent } from './features/user-auth-feature/components/login-page/login-page.component';
+import { LoginFormComponent } from './features/user-auth-feature/components/login-form/login-form.component';
+import { SignupPageComponent } from './features/user-auth-feature/components/signup-page/signup-page.component';
+import { SignupFormComponent } from './features/user-auth-feature/components/signup-form/signup-form.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { ConfirmDialogComponent } from './features/show-feature/confirm-dialog/confirm-dialog.component';
-import { TokenInterceptor } from './token.interceptor';
-import { LandingPageComponent } from './features/landing-page-feature/landing-page/landing-page.component';
-import { LandingHeroComponent } from './features/landing-page-feature/landing-hero/landing-hero.component';
-import { WhyUsComponent } from './features/landing-page-feature/why-us/why-us.component';
-import { SearchDemoComponent } from './features/landing-page-feature/search-demo/search-demo.component';
-import { LinksDemoComponent } from './features/landing-page-feature/links-demo/links-demo.component';
-import { LandingFaqComponent } from './features/landing-page-feature/landing-faq/landing-faq.component';
+import { ConfirmDialogComponent } from './features/show-feature/components/confirm-dialog/confirm-dialog.component';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { LandingPageComponent } from './features/landing-page-feature/components/landing-page/landing-page.component';
+import { LandingHeroComponent } from './features/landing-page-feature/components/landing-hero/landing-hero.component';
+import { WhyUsComponent } from './features/landing-page-feature/components/why-us/why-us.component';
+import { SearchDemoComponent } from './features/landing-page-feature/components/search-demo/search-demo.component';
+import { LinksDemoComponent } from './features/landing-page-feature/components/links-demo/links-demo.component';
+import { LandingFaqComponent } from './features/landing-page-feature/components/landing-faq/landing-faq.component';
 import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
-import { ShowTableComponent } from './features/show-feature/show-table/show-table.component';
 
 
 @NgModule({
@@ -74,7 +73,6 @@ import { ShowTableComponent } from './features/show-feature/show-table/show-tabl
     LinksDemoComponent,
     LandingFaqComponent,
     NotFoundPageComponent,
-    ShowTableComponent,
   ],
   entryComponents:[
     NewBookmarkFormComponent
