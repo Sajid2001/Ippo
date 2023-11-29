@@ -55,7 +55,7 @@ https://github.com/Sajid2001/Ippo/assets/60523377/fc865bda-2e14-43e3-bf5d-f470ea
 
 ### Files Needed
 1. In ```./frontend-folder/src/environments``` , create a file named ```environemts.ts``` and a file named ```environment.prod.ts```. Check the ```sample.environment.ts``` file for what variables need to be added.
-2. **If you are not using Docker** and would like to run the project on your machine, navigate ```./AniList/src/main/java/resources``` and run the following commands:
+2. **If you are not using Docker** and would like to run the project on your local machine, navigate ```./AniList/src/main/java/resources``` and run the following commands:
    ```
     mkdir certs
     openssl genrsa -out /certs/keypair.pem 2048 && \
@@ -65,6 +65,9 @@ https://github.com/Sajid2001/Ippo/assets/60523377/fc865bda-2e14-43e3-bf5d-f470ea
    Make sure OpenSSL is already installed on your computers
 
 ### Instructions (Using Docker)
+
+Important Note: Uncomment the line 23 of the Dockerfile inside the AniList folder, ```# VOLUME /tmp```, before working with Docker. Before you merge with the main branch, make sure you comment that line again. 
+
 1. Run the command ```docker-compose up``` in the project directory to run every component of the application (frontend, backend, database), in containers (Make sure you have docker installed on your computer)
 2. The backend should run on localhost:8080 and the frontend should run on localhost:4200
 
