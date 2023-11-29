@@ -6,6 +6,8 @@
 
 Ippo is an open source anime bookmarking site that makes keeping up with your favorite anime easier.
 
+Deployed Beta Site: https://ippo-live.netlify.app
+
 ## Features
 
 * [Create Bookmarks for your favorite anime TV series or movie](#creating-a-bookmark)
