@@ -78,7 +78,7 @@ Important Note: Uncomment the line 23 of the Dockerfile inside the AniList folde
 2. Navigate to ```./frontend-folder``` and run the frontend using the command ```ng serve```
 3. The backend should run on localhost:8080 and the frontend should run on localhost:4200
 
-### Environment Variables (Not Using Docker)
+### Environment Variables
 
 Backend: 
 
@@ -88,6 +88,8 @@ MYSQL_USERNAME = Username of local database, usually the root.
 MYSQL_PASSWORD = Password of local database
 ALLOWED_ORIGIN = Allowed origin to prevent cors error. For dev purposes, use http://localhost:4200
 ```
+
+* Dummy Environment Variables provided through ```docker-compose```
 
 ## Find Any Bugs?
 If you found an issue or would like to submit an improvement to this project, please submit an issue using the issues tab above. If you would like to submit a Pull Request with a fix, reference the issue that you created.
