@@ -58,6 +58,7 @@ https://github.com/Sajid2001/Ippo/assets/60523377/fc865bda-2e14-43e3-bf5d-f470ea
 ### Files Needed
 1. In ```./frontend-folder/src/environments``` , create a file named ```environemts.ts``` and a file named ```environment.prod.ts```. Check the ```sample.environment.ts``` file for what variables need to be added.
 2. **If you are not using Docker** and would like to run the project on your local machine, navigate to ```./AniList/src/main/java/resources``` and run the following commands:
+   
    ```
     mkdir certs
     openssl genrsa -out /certs/keypair.pem 2048 && \
