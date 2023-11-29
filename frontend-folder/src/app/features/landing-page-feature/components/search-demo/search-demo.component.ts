@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { JikanService } from 'src/app/core/services/jikan.service';
+import { JikanService } from 'src/app/shared/services/jikan.service';
 
 @Component({
   selector: 'app-search-demo',

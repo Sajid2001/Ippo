@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShowsComponent } from './features/show-feature/shows/shows.component';
-import { SignupPageComponent } from './features/user-auth-feature/signup-page/signup-page.component';
-import { LoginPageComponent } from './features/user-auth-feature/login-page/login-page.component';
+import { ShowsComponent } from './features/show-feature/components/shows/shows.component';
+import { SignupPageComponent } from './features/user-auth-feature/components/signup-page/signup-page.component';
+import { LoginPageComponent } from './features/user-auth-feature/components/login-page/login-page.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { LoggedInGuard } from './core/guards/logged-in.guard';
-import { LandingPageComponent } from './features/landing-page-feature/landing-page/landing-page.component';
+import { LandingPageComponent } from './features/landing-page-feature/components/landing-page/landing-page.component';
 import { NotFoundPageComponent } from './shared/components/not-found-page/not-found-page.component';
 
 const routes: Routes = [

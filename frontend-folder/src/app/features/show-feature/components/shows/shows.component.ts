@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { Bookmark } from '../../../shared/models/bookmark.model';
+import { Bookmark } from '../../../../shared/models/bookmark.model';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
-import { BookmarkService } from '../../../core/services/bookmark.service';
+import { BookmarkService } from '../../services/bookmark.service';
 import { FormControl } from '@angular/forms';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';

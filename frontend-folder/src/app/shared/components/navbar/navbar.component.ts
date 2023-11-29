@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../core/services/user.service';
+import { UserService } from '../../../features/user-auth-feature/services/user.service';
 import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { NavbarLink } from '../../models/navbarlink.model'
-import { SnackbarService } from 'src/app/core/services/snackbar.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 
 @Component({

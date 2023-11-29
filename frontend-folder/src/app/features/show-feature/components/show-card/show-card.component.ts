@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Bookmark } from '../../../shared/models/bookmark.model';
+import { Bookmark } from '../../../../shared/models/bookmark.model';
 import {MatDialog} from '@angular/material/dialog';
-import { BookmarkService } from 'src/app/core/services/bookmark.service';
+import { BookmarkService } from 'src/app/features/show-feature/services/bookmark.service';
 
 
 

@@ -7,9 +7,9 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, switchMap, throwError } from 'rxjs';
-import { UserService } from './core/services/user.service';
+import { UserService } from '../../features/user-auth-feature/services/user.service';
 import { Router } from '@angular/router';
-import { SnackbarService } from './core/services/snackbar.service';
+import { SnackbarService } from '../../shared/services/snackbar.service';
 import { MatDialog } from '@angular/material/dialog';
 
 @Injectable()

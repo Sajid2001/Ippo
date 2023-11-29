@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { Bookmark } from '../../shared/models/bookmark.model';
+import { Bookmark } from '../../../shared/models/bookmark.model';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { EditBookmarkFormComponent } from 'src/app/features/show-feature/edit-bookmark-form/edit-bookmark-form.component';
-import { StreamLinksComponent } from 'src/app/features/show-feature/stream-links/stream-links.component';
+import { EditBookmarkFormComponent } from 'src/app/features/show-feature/components/edit-bookmark-form/edit-bookmark-form.component';
+import { StreamLinksComponent } from 'src/app/features/show-feature/components/stream-links/stream-links.component';
 
 const httpOptions = {
   headers: new HttpHeaders({

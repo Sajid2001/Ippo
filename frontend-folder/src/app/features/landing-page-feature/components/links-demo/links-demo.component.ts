@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StreamLink } from '../../../shared/models/streamlink.model';
+import { StreamLink } from '../../../../shared/models/streamlink.model';
 
 @Component({
   selector: 'app-links-demo',
